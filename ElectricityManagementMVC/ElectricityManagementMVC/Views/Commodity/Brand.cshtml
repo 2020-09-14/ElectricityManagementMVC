@@ -14,96 +14,102 @@
 </head>
 <body>
     <div>
-        
+
         <input />
     </div>
-    <table class="table ">
-        <tr>
-            <th>
-                序号
-            </th>
-            <th>
-                品牌Logo
-            </th>
-            <th>
-                品牌名称
-            </th>
-            <th>
-                企业名
-            </th>
-
-            <th>
-                创建时间
-            </th>
-            <th>
-                操作
+    <div style="width: 1351px; height: 332px; margin-left: 170px;">
+        <table class="table ">
+            <tr>
+                <th>
+                    序号
                 </th>
-        </tr>
-        <tbody id="tb">
-        </tbody>
-    </table>
-    <div style="">
-        <input id="Hidden1" value="1" type="hidden" /><input id="Hidden2" value="" type="hidden" />
-        <input class="" id="bu1" type="button" value="上一页" onclick="fist()" />
-        <input style="" id="bu1" class="" type="button" value="下一页" onclick="next()" />
-        <select id="Select1" onclick="Show()">
-            <option value="3">3</option>
-            <option value="10">10</option>
-            <option value="100">100</option>
-            <option value="2000">2000</option>
-        </select>
+                <th>
+                    品牌Logo
+                </th>
+                <th>
+                    品牌名称
+                </th>
+                <th>
+                    企业名
+                </th>
+
+                <th>
+                    创建时间
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <tbody id="tb">
+            </tbody>
+        </table>
+        <div style="margin-left: 228px;">
+            <input id="Hidden1" value="1" type="hidden" /><input id="Hidden2" value="" type="hidden" />
+            <input class="" id="bu1" style="margin-left:281px"  type="button" value="上一页" onclick="fist()" />
+            <input id="bu1" style="margin-left:281px" class="" type="button" value="下一页" onclick="next()" />
+            <select id="Select1" onclick="Show()">
+                <option value="3">3</option>
+                <option value="10">10</option>
+                <option value="100">100</option>
+                <option value="2000">2000</option>
+            </select>
+        </div>
     </div>
     
-    <script>
-        $(function () {
-            Xian();
-        })
-        function Xian() {
-            $.ajax({
-                url: 'http://localhost:2789/api/Pinpai',
-                data: { page: $("#Hidden1").val(), rows: $("#Select1").val()},
-                dataType: 'json',
-                success: function (d) {
-                    $("#Hidden2").val(d.count);
-                    $('#tb').empty();
-                    $.each(d.list, function (index, item) {
-                        var line = '<tr>'
-                            + '<td>' + item.brandId + '</td>'
-                            + '<td><img style="width:40px;height:40px" src="http://localhost:2789' + item.img + '" /></td>'
-                            + '<td>' + item.bname + '</td>'
-                            + '<td>' + item.corporation + '</td>'
-                            + '<td>' + item.creaTime + '</td>'
-                            + '<td><a><p>删除</p></a></td>'
-                            + '</tr>'
-                        $('#tb').append(line);
-                    })
-                }
+
+      
+
+
+        <script>
+            $(function () {
+                Xian();
             })
-        }
-        function next() {
-            var i = $("#Hidden1").val();//页码
-            var j = $("#Select1").val();//页数
-            var count = $("#Hidden2").val();//总数据
-            var lin = Number(Math.ceil(count / j));
-
-            if (i < lin) {
-                $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
+            function Xian() {
+                $.ajax({
+                    url: 'http://localhost:2789/api/Pinpai',
+                    data: { page: $("#Hidden1").val(), rows: $("#Select1").val() },
+                    dataType: 'json',
+                    success: function (d) {
+                        $("#Hidden2").val(d.count);
+                        $('#tb').empty();
+                        $.each(d.list, function (index, item) {
+                            var line = '<tr>'
+                                + '<td>' + item.brandid + '</td>'
+                                + '<td><img style="width:40px;height:40px" src="http://localhost:2789' + item.img + '" /></td>'
+                                + '<td>' + item.bname + '</td>'
+                                + '<td>' + item.corporation + '</td>'
+                                + '<td>' + item.creaTime + '</td>'
+                                + '<td><a><p>删除</p></a></td>'
+                                + '</tr>'
+                            $('#tb').append(line);
+                        })
+                    }
+                })
             }
+            function next() {
+                var i = $("#Hidden1").val();//页码
+                var j = $("#Select1").val();//页数
+                var count = $("#Hidden2").val();//总数据
+                var lin = Number(Math.ceil(count / j));
 
-            Xian();
+                if (i < lin) {
+                    $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
+                }
 
-        }
-        function fist() {
-            if ($("#Hidden1").val() == "1") {
-                $("#Hidden1").val(1);
+                Xian();
+
             }
-            else {
-                $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
-            }
-            Xian();
+            function fist() {
+                if ($("#Hidden1").val() == "1") {
+                    $("#Hidden1").val(1);
+                }
+                else {
+                    $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
+                }
+                Xian();
 
-        }
-    </script>
+            }
+        </script>
 
 </body>
 </html>
