@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewData["Title"] = "BrandAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>.Net Core WebApi图片上传</title>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer">
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+
+</head>
+<body>
+    <h1>添加您公司的品牌</h1>
+    <table class="table table-bordered" style="width:700px;">
+        <tr>
+            <td align="right">
+                <h3>品牌Logo</h3>
+            </td>
+            <td>
+                <form id="myform" class="col-form-label" name="myform" method="post" enctype="multipart/form-data"
+                      action="https://localhost:44376/Upload/FormImg">
+                    <input type="file" name="files" id="files" value="选择需要上传的文件" multiple />
+                    <input type="button" id="submitbtn" value="提交" onclick="uplpadfile()">
+                </form>
+                <div>
+                    <input type="hidden" id="hi" />
+                    上传的图片，返回的地址
+                    <div id="imglist">
+
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <h3>品牌名称</h3>
+                
+            </td>
+            <td>
+                <input type="text" class="form-control" id="tetName" />
+            </td>
+        </tr>
+        <tr>
+            <td align="right">
+                <h3>企业名称</h3>
+                
+            </td>
+            <td>
+                <input type="text" class="form-control" id="tetCorporation" />
+            </td>
+        </tr>
+        <tr>
+
+            <td colspan="2" align="center">
+                <input type="button" class="btn btn-info" id="bu" value="添加" onclick="BranAdd()" />
+            </td>
+        </tr>
+    </table>
+    
+
+    
+    <script type="text/javascript">
+
+　
+　  //前端第一种提交方式
+    function  uplpadfile(){
+        //获取表单的数据
+        var formdata
+        var file = $("#files").get(0);
+        var files = file.files;
+        var formdata = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formdata.append("files", files[i]);
+        }
+
+        $.ajax({
+            type: 'post',
+            data: formdata,
+            contentType: false,
+            processData: false,
+            url: "http://localhost:2789/Upload/FormImg",
+            success: function (result) {
+                if (result != "上传失败" || result != "文件为空") {
+                    $('#hi').val(result)
+                    alert(result)
+                    var line = '<img id="imgas" style="width:40px;height:40px"  src="http://localhost:2789' + result + '" />'
+                    $('#imglist').append(line)
+                    alert('上传成功！');
+                } else {
+                    alert('上传失败！')
+                }
+            }
+        })
+
+
+        };
+
+     
+    </script>
+
+</body>
+</html>
+<script>
+    function BranAdd() {
+        alert($('#hi').val())
+        var obj = {};
+        obj.img = $("#hi").val();
+        obj.Bname = $("#tetName").val();
+        obj.Corporation = $("#tetCorporation").val();
+        $.ajax({
+            url: 'http://localhost:2789/api/Brandadd',
+            data: obj,
+            type: 'post',
+            success: function (d) {
+                if (d > 0) {
+                    alert('添加成功！')
+                }
+                else {
+                    alert('添加失败！')
+                }
+            }
+        })
+    };
+</script>

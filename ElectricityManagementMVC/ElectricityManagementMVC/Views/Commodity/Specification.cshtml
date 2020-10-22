@@ -1,0 +1,255 @@
+﻿
+@{
+    ViewData["Title"] = "Specification";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/moment-with-locales.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+</head>
+<body>
+
+    <div style="width:100%;height:150px;margin-left: 170px;margin-top:50px" id="date">
+
+        当前状态
+        <select id="Ststettt">
+            <option value="">请选择</option>
+            <option value="1">启用</option>
+            <option value="0">禁用</option>
+        </select>
+        规格名称
+        <input type="text" id="txtName" />
+        <input type="button" style="margin-left:1000px;" class="btn btn-info" value="查询" onclick="Add()" />
+    </div>
+    <div style="width: 1351px; height: 332px; margin-left: 170px;">
+       
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    <input type="checkbox" value="" id="ck" />
+                </th>
+                <th>
+                    序号
+                </th>
+                <th>
+                    规格名称
+                </th>
+                <th>
+                    创建时间
+                </th>
+                <th>
+                    当前状态
+                </th>
+                <th>
+                    操作
+                </th>
+               
+            </tr>
+            <tbody id="tb"></tbody>
+        </table>
+    </div>
+    <div style="margin-left: 545px; ">
+        <input id="Hidden1" value="1" type="hidden" /><input id="Hidden2" value="" type="hidden" />
+        <input class="" id="bu1" type="button" value="上一页" onclick="fist()" />
+        <input style="margin-left:281px" id="bu1" class="" type="button" value="下一页" onclick="next()" />
+        <select style="margin-left: 339px; " id="yema" onclick="Show()">
+            <option value="3">3</option>
+            <option value="10">10</option>
+            <option value="100">100</option>
+            <option value="2000">2000</option>
+
+        </select>
+        <script>
+            function next() {
+                var i = $("#Hidden1").val();//页码
+                var j = $("#yema").val();//页数
+                var count = $("#Hidden2").val();//总数据
+                var lin = Number(Math.ceil(count / j));
+
+                if (i < lin) {
+                    $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
+                }
+
+                Show();
+
+            }
+            function fist() {
+                if ($("#Hidden1").val() == "1") {
+                    $("#Hidden1").val(1);
+                }
+                else {
+                    $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
+                }
+                Show();
+
+            }
+        </script>
+    </div>
+    @*模态框*@
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        商品详情
+                    </h4>
+                </div>
+                <div class="modal-body" style="background-color:white;width:100%;height:100%"  >
+                   <table>
+                       <tr>
+                           <td>规格名称 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                           <td><input type="text" id="Guiname" style="width:80px;height:40px" /></td>
+                       </tr>
+                       <tr>
+                           <td>
+                               当前状态&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           </td>
+                           <td>
+                               <select id="Motstate">
+                                   <option value="1">启用</option>
+                                   <option value="0">禁用</option>
+                               </select>
+                           </td>
+                       </tr>
+                   </table>
+
+                </div>
+                <div class="modal-footer">
+                   
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" id="BaaXq" class="btn btn-primary">
+                        提交更改
+                    </button>
+                    <button type="button" id="BuuAdd"  class="btn btn-primary">
+                        添加
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+    <script>
+        $(function () {
+            Show();
+            
+            $("#ck").click(function () {
+                $(".ck").each(function () {
+
+                    $(this).attr("checked", !$(this).attr("checked"))
+                })
+
+            })
+            
+
+        })
+
+        // { "brandid": 13, "img": "/Images/201020043952893396.png", "bname": "张春雨", "corporation": "123", "state": true, "creaTime": "2020-10-20T16:40:06" }, { "brandid": 14, "img": "/Images/201020064652534180.jpg", "bname": "123", "corporation": "123", "state": true, "creaTime": "2020-10-20T18:46:59" }]
+        function Show() {
+          
+           
+            $.ajax({
+                url: 'http://localhost:2789/api/SpcifiShow',
+                data: {
+                    page: $("#Hidden1").val(),
+                    rows: $("#yema").val(),
+                    state: $("#Ststettt").val(),
+                    name: $("tetName").val()
+                },
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Hidden2").val(d.count);
+                    $('#tb').empty();
+                    $.each(d.list, function (index, item) {
+                        var line = '<tr>'
+                            + '<td><input class="ck" type="checkbox"   value="' + item.specificationId + '" /></td>'
+                            + '<td>1</td>'
+                            + '<td>' + item.sname + '</td>'
+                            + '<td>' + item.creaTime + '</td>'
+                            + '<td>' + (item.steate==1?"启用":"禁用") + ' </td>'
+                            + '<td><a href="#" onclick = "del(' + item.specificationId + ')"><p>删除</p></a><a href="#" data-toggle="modal" data-target="#myModal" onclick = "Xq(' + item.specificationId + ')"><p>查看详情</p></a></a><a href="#" data-toggle="modal" data-target="#myModal" onclick = "Bianji(' + item.specificationId + ')"><p>编辑</p></a></td>'
+                            + '</tr>'
+                        $('#tb').append(line);
+                    })
+                }
+            })
+        }
+        
+        
+        function Xq(ids) {
+            $("#BaaXq").hide();
+            $("#BuuAdd").hide();
+            $.ajax({
+                url: 'http://localhost:2789/api/SpFt?ids=' + ids,
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Guiname").val(d.sname);
+
+                  
+                }
+            })
+        }
+   
+       
+        function del(ids) {
+            $.ajax({
+                url: 'http://localhost:2789/api/SpDel',
+                data: { ids: ids },
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    if (d > 0) {
+                        alert('删除成功!')
+                        Show("");
+                    }
+                    else {
+                        alert('删除失败!')
+                    }
+                }
+            })
+        }
+        function delAll() {
+            var id = "";
+            //for (var i = 0; i < $(".ck").length; i++) {
+            //    if ($(".ck").eq(i).attr("checked") == "checked") {
+            //        id += $(".ck").eq(i).val() + ","
+            //    }
+            //}
+            $('input[Class="ck"]:checked').each(function () {
+
+                id += $(this).val() + ',';
+
+                //Ids += ',';
+            });
+            if (id == "") {
+                alert("请选择删除项")
+                return false;
+
+            }
+            else {
+                if (!confirm("是否删除选择项")) return true;
+            }
+            id = id.substring(0, id.length - 1);
+            //alert(id);
+            del(id);
+        }
+
+    </script>
+</body>
+</html>
+

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\专高六\\练习\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {}
+    "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {}
   },
   "projects": {
-    "E:\\专高六\\练习\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {
+    "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\专高六\\练习\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+        "projectUniqueName": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
         "projectName": "ElectricityManagementMVC",
-        "projectPath": "E:\\专高六\\练习\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+        "projectPath": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
         "packagesPath": "C:\\Users\\86176\\.nuget\\packages\\",
-        "outputPath": "E:\\专高六\\练习\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
+        "outputPath": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,12 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

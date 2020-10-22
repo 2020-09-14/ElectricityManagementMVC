@@ -9,4 +9,8 @@
     <Folder Include="wwwroot\moban3714\vendor\font-awesome\scss\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
 </Project>

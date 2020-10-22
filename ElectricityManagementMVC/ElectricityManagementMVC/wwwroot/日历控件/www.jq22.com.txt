@@ -1,0 +1,15 @@
+
+   jQuery插件库   
+
+   https://www.jq22.com 
+
+   找的更少，做的更多！ jQuery插件库只为您提供最好的！
+		
+
+<script type="text/javascript">
+            var d = new DateJs({
+                inputEl: '#inputdate',
+                el: '#date'
+            })
+            console.log(d)
+        </script>

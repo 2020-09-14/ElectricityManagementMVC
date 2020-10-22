@@ -1,0 +1,457 @@
+﻿@{
+    ViewData["Title"] = "CommShow";
+    // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/moment-with-locales.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+</head>
+<body>
+
+    <div style="width:100%;height:150px;margin-left: 170px;margin-top:50px" id="date">
+
+        <div class="row" style="margin-right: 151px;margin-left: 0px;">
+            <div>
+                <span>商品分类</span>&nbsp;
+                <select id="Select1" class="btn btn-light" onclick="Show1()">
+                    <option></option>
+                </select>
+
+                <select id="Select2" class="btn btn-light" onclick="Show2()">
+                    <option></option>
+                </select>
+
+                <select id="Select3" class="btn btn-light">
+                    <option></option>
+                </select>
+
+
+                <br />
+            </div>
+
+            <span style="margin-left:2px">创建时间</span>&nbsp;
+
+
+            <div class="row" style="margin-left:-8px;margin-top:-27px">
+
+                <div class='col-sm-6'>
+
+                    <div class="form-group">
+
+                        <label>选择开始时间：</label>
+
+                        <!--指定 date标记-->
+
+                        <div class='input-group date' id='datetimepicker1'>
+
+                            <input type='text' id="c1" class="form-control" />
+
+                            <span class="input-group-addon">
+
+                                <span class="glyphicon glyphicon-calendar"></span>
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class='col-sm-6'>
+
+                    <div class="form-group">
+
+                        <label>选择结束时间：</label>
+
+                        <!--指定 date标记-->
+
+                        <div class='input-group date' id='datetimepicker2'>
+
+                            <input type='text' id="c2" class="form-control" />
+
+                            <span class="input-group-addon">
+
+                                <span class="glyphicon glyphicon-calendar"></span>
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <span style="margin-left: 26px">累计销量</span>&nbsp;
+            <input type="text" style="width:50px;height:21px" />至<input type="text" style="width: 50px; height: 21px;" />
+            <span>库存量</span>&nbsp;
+            <input type="text" id="Kc1" style="width: 50px; height: 21px;" />至<input type="text" id="Kc2" style="width: 50px; height: 21px;" />
+        </div>
+        <span style="margin-top:20px">商品名称</span>&nbsp;<input type="text" placeholder="商品名称" id="goodsname" />&nbsp;&nbsp;
+
+        <span>商品编码</span>&nbsp;
+        <input type="text" value="" style="margin-left: 20px" placeholder="商品编码" id="goodsnum">
+        <span style="margin-left:70px">SKU编码</span>&nbsp;
+        <input type="text" id="SKU" style="margin-left:-7px" />&nbsp;
+        <span>当前售价</span>&nbsp;
+        <input type="text" id="sj1" style="width: 50px; height: 21px; margin-left: -7px" />至<input id="sj2" type="text" style="width: 50px; height: 21px;" />
+        <input type="button" style="margin-left:42px" class="btn btn-info" value="查询" onclick="Show()" /> <input type="button" style="margin-left:31px" class="btn btn-info" value="重置" />
+    </div>
+    <div style="width: 1351px; height: 332px; margin-left: 170px;">
+        <div style="width:100%;height:80px">
+            <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+                <ul class="navbar-nav">
+                    &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" onclick="Show('')">全部</a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="Show('1')">在售中</a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="Show('2')">已售馨</a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <li class="nav-item">
+                        <a class="nav-link " href="#" onclick="Show('3')">已下架</a>
+                    </li>&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
+
+                </ul>
+            </nav>
+        </div>
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    <input type="checkbox" value="" id="ck" />
+                </th>
+                <th>
+                    商品编号
+                </th>
+                <th>
+                    商品推荐
+                </th>
+                <th>
+                    商品属性
+                </th>
+                <th>
+                    图片
+                </th>
+                <th>
+                    规格
+                </th>
+                <th>
+                    库存
+                </th>
+                <th>
+                    状态
+                </th>
+                <th>
+                    售价
+                </th>
+                <th>
+                    创建时间
+                </th>
+                <th>
+                    操作
+                </th>
+            </tr>
+            <tbody id="tb"></tbody>
+        </table>
+    </div>
+    <div style="margin-left: 545px; ">
+        <input id="Hidden1" value="1" type="hidden" /><input id="Hidden2" value="" type="hidden" />
+        <input class="" id="bu1" type="button" value="上一页" onclick="fist()" />
+        <input style="margin-left:281px" id="bu1" class="" type="button" value="下一页" onclick="next()" />
+        <select style="margin-left: 339px; " id="yema" onclick="Show()">
+            <option value="3">3</option>
+            <option value="10">10</option>
+            <option value="100">100</option>
+            <option value="2000">2000</option>
+
+        </select>
+        <script>
+            function next() {
+                var i = $("#Hidden1").val();//页码
+                var j = $("#Select1").val();//页数
+                var count = $("#Hidden2").val();//总数据
+                var lin = Number(Math.ceil(count / j));
+
+                if (i < lin) {
+                    $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
+                }
+
+                Xian();
+
+            }
+            function fist() {
+                if ($("#Hidden1").val() == "1") {
+                    $("#Hidden1").val(1);
+                }
+                else {
+                    $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
+                }
+                Xian();
+
+            }
+        </script>
+    </div>
+    @*模态框*@
+    <div style="background-color:white" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        商品详情
+                    </h4>
+                </div>
+                <div class="modal-body" style="background-color:white">
+                    <div id="Xqa">
+
+                    </div>
+                   
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button type="button" class="btn btn-primary">
+                        提交更改
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+    <script>
+        $(function () {
+            Show("");
+            Show11();
+            $("#ck").click(function () {
+                $(".ck").each(function () {
+
+                    $(this).attr("checked", !$(this).attr("checked"))
+                })
+
+            })
+            var picker1 = $('#datetimepicker1').datetimepicker({
+
+                format: 'YYYY-MM-DD',
+
+                locale: moment.locale('zh-cn'),
+
+                //minDate: '2016-7-1'
+
+            });
+
+            var picker2 = $('#datetimepicker2').datetimepicker({
+
+                format: 'YYYY-MM-DD',
+
+                locale: moment.locale('zh-cn')
+
+            });
+            //动态设置最小值
+            picker1.on('dp.change', function (e) {
+                picker2.data('DateTimePicker').minDate(e.date);
+
+            });
+            //动态设置最大值
+            picker2.on('dp.change', function (e) {
+
+                picker1.data('DateTimePicker').maxDate(e.date);
+
+            });
+            //全选
+
+        })
+
+        // { "brandid": 13, "img": "/Images/201020043952893396.png", "bname": "张春雨", "corporation": "123", "state": true, "creaTime": "2020-10-20T16:40:06" }, { "brandid": 14, "img": "/Images/201020064652534180.jpg", "bname": "123", "corporation": "123", "state": true, "creaTime": "2020-10-20T18:46:59" }]
+        function Show(ids) {
+            classIfyId = $("#Select3").val();
+
+            creaTime = $("#c1").val();
+            delTime = $("#c2").val();
+            inventory1 = $("#Kc1").val();
+            inventory2 = $("#Kc2").val();
+            name = $("#goodsname").val();
+            bian = $("#SKU").val();
+            price1 = $("#sj1").val();
+            price2 = $("#sj2").val();
+            $.ajax({
+                url: 'http://localhost:2789/api/WcGoods',
+                data: {
+                    page: $("#Hidden1").val(),
+                    rows: $("#yema").val(),
+                    ids: ids,
+                    classIfyId: classIfyId,
+                    creaTime: creaTime,
+                    delTime: delTime,
+                    inventory1: inventory1,
+                    inventory2: inventory2,
+                    name: name,
+                    bian: bian,
+                    price1: price1,
+                    price2: price2
+                },
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Hidden2").val(d.count);
+                    $('#tb').empty();
+                    $.each(d.list, function (index, item) {
+                        var line = '<tr>'
+                            + '<td><input class="ck" type="checkbox"   value="' + item.commodityId + '" /></td>'
+                            + '<td>' + item.commodityId + '</td>'
+                            + '<td>' + item.recommend + '</td>'
+                            + '<td>' + item.bname + '</td>'
+                            + '<td><img id="imgas" style="width:40px;height:40px" src="http://localhost:2789' + item.img + '" alt="" /><span>商品:' + item.sCname + '</span> </td>'
+                            + '<td>' + item.introduce + '</td>'
+                            + '<td>' + item.inventory + '</td>'
+                            + '<td>' + (item.state == 1 ? "在售中" : item.state == 2 ? "已售馨" : item.state == 3 ? "已下架" : "已下架") + '</td>'
+                            + '<td>' + item.price + '</td>'
+                            + '<td>' + item.creaTime + '</td>'
+                            + '<td><a href="#" onclick = "del(' + this.commodityId + ')"><p>删除</p></a> &nbsp; &nbsp;&nbsp;&nbsp;<a href="#" onclick = "Sj(' + this.commodityId + ')"><p>上架</p></a> &nbsp; &nbsp;&nbsp;&nbsp;<a href="#" data-toggle="modal" data-target="#myModal" onclick = "Xq(' + this.commodityId + ')"><p>查看详情</p></a></td>'
+                            + '</tr>'
+                        $('#tb').append(line);
+                    })
+                }
+            })
+        }
+        //上架
+        function Sj(id) {
+            var ids = JSON.stringify(id);
+            $.ajax({
+                url: 'http://localhost:2789/api/Sj?ids=' + ids,
+              
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    if (d > 0) {
+                        alert('上架成功！')
+                    } else {
+                        alert('上架失败！')
+                    }
+                }
+            })
+        }
+        function Xq(ids) {
+            $.ajax({
+                url: 'http://localhost:2789/api/Xq?ids=' + ids,
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Xqa").empty();
+                    var line = ' <img id="imagett" style="width:40px;height:40px" src="http://localhost:2789' + d.img + '" alt="" /> 商品:' + d.sCname + '&nbsp;  规格 ' + d.introduce+':'
+                    $("#Xqa").append(line);
+                }
+            })
+        }
+        function Show11() {
+            $.ajax({
+                url: 'http://localhost:2789/api/Claf',
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select1").empty();
+                    $('#Select1').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                        $('#Select1').append(lin);
+                    })
+                }
+            })
+        }
+        //加载二级联动
+        function Show1() {
+            $.ajax({
+                url: 'http://localhost:2789/api/GetClaf',
+                type: 'get',
+                data: { ids: $('#Select1').val() },
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select2").empty();
+                    $('#Select2').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                        $('#Select2').append(lin);
+                    })
+                }
+            })
+        }
+        //加载三级联动
+        function Show2() {
+            $.ajax({
+                url: 'http://localhost:2789/api/GetClaf',
+                type: 'get',
+                data: { ids: $('#Select2').val() },
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select3").empty();
+                    $('#Select3').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                        $('#Select3').append(lin);
+                    })
+                }
+            })
+        }
+        function del(ids) {
+            $.ajax({
+                url: 'http://localhost:2789/api/DelComm',
+                data: { ids: ids },
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    if (d > 0) {
+                        alert('删除成功!')
+                        Show("");
+                    }
+                    else {
+                        alert('删除失败!')
+                    }
+                }
+            })
+        }
+        function delAll() {
+            var id = "";
+            //for (var i = 0; i < $(".ck").length; i++) {
+            //    if ($(".ck").eq(i).attr("checked") == "checked") {
+            //        id += $(".ck").eq(i).val() + ","
+            //    }
+            //}
+            $('input[Class="ck"]:checked').each(function () {
+
+                id += $(this).val() + ',';
+
+                //Ids += ',';
+            });
+            if (id == "") {
+                alert("请选择删除项")
+                return false;
+
+            }
+            else {
+                if (!confirm("是否删除选择项")) return true;
+            }
+            id = id.substring(0, id.length - 1);
+            //alert(id);
+            del(id);
+        }
+
+    </script>
+</body>
+</html>
+

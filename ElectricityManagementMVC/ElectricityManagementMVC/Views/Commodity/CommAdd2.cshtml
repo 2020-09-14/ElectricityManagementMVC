@@ -1,0 +1,287 @@
+﻿@{
+    ViewData["Title"] = "CommAdd2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>商品添加</title>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <table class="table table-bordered" style="background-color:white;width:1300px;height:800px;margin-left:300px;margin-top:20px" >
+        <tr>
+            <td>
+                <div style="background-color:white;width:100%;height:100%;margin-left:305px">
+
+                    <div style="background-color:white ">
+                        <div style="margin-left:100px">
+                            <h2 style="margin-left:63px">基础信息</h2>
+                            <span style="margin-top:30px">商品分类:</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select id="Select1" class="btn btn-light" onclick="Show1()">
+                                <option></option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select id="Select2" class="btn btn-light" onclick="Show2()">
+                                <option></option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select id="Select3" class="btn btn-light">
+                                <option></option>
+                            </select>
+                            <br />
+                            <span style="margin-top:30px">商品名称</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input style="margin-top:30px" type="text" id="tetName" />
+                            <br />
+                            <span style="margin-top:30px">商品属性</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            品牌
+                            <select id="Brand" class="btn btn-light" style="margin-top:-5px">
+                                <option>请选择</option>
+
+                            </select>
+                            <a style="margin-top:30px" href="/Commodity/BrandAdd">新增品牌</a>
+                            <br />
+                            <span style="width:100px;">推荐语</span>
+
+                            <textarea id="Recommend" class="" style="width:500px;height:50px;margin-top:30px" rows="3"></textarea>
+                            <br />
+                            <span style="margin-top:30px">支付方式</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select id="Pay" style="margin-top:-2px" class="btn btn-light">
+                                <option>线上</option>
+                                <option>线下</option>
+                            </select>
+                            <br />
+
+                            <h4 style="margin-left:63px;margin-top:50px">商品图片</h4>
+
+                            <form id="myform" class="col-form-label" name="myform" method="post" enctype="multipart/form-data"
+                                  action="https://localhost:44376/Upload/FormImg">
+                                <input type="file" name="files" id="files" value="选择需要上传的文件" multiple />
+                                <input type="button" id="submitbtn" value="提交" onclick="uplpadfile()">
+                            </form>
+
+                            <div>
+                                @*隐藏的图片路径调用添加的时候取他的值*@
+                                <input type="hidden" id="hi" />
+                                上传的图片，返回的地址
+                                <div id="imglist">
+
+                                </div>
+
+                            </div>
+                            <br />
+                            <span style="margin-top:30px">规格</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select id="Select4" class="btn btn-light" onclick="CommAddsp()">
+                                <option></option>
+                            </select>
+                            <input style="margin-top:30px" type="text" id="introduce" />
+                            <br />
+                            <span style="margin-top:30px">库存</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input style="margin-top:30px" type="text" id="inventory" />
+                            <br />
+                            <span style="margin-top:30px">售价</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input style="margin-top:30px" type="text" id="price" />
+                            <br />
+                            <input style="margin-top:30px;" type="button" class="btn btn-info" value="确定" onclick="CommAdd()" />
+                            <input style="margin-top:30px;margin-left:40px" type="button" class="btn btn-info" value="取消" />
+                        </div>
+
+                    </div>
+
+                    <script type="text/javascript">
+
+
+                        //前端第一种提交方式
+                        function uplpadfile() {
+                            //获取表单的数据
+                            var formdata
+                            var file = $("#files").get(0);
+                            var files = file.files;
+                            var formdata = new FormData();
+                            for (var i = 0; i < files.length; i++) {
+                                formdata.append("files", files[i]);
+                            }
+
+                            $.ajax({
+                                type: 'post',
+                                data: formdata,
+                                contentType: false,
+                                processData: false,
+                                url: "http://localhost:2789/Upload/FormImg",
+                                success: function (result) {
+                                    if (result != "上传失败" || result != "文件为空") {
+                                        $('#hi').val(result)
+                                        alert(result)
+                                        var line = '<img id="imgas" src="http://localhost:2789' + result + '" />'
+                                        $('#imglist').append(line)
+                                        alert('上传成功！');
+                                    } else {
+                                        alert('上传失败！')
+                                    }
+                                }
+                            })
+
+
+                        };
+
+
+                    </script>
+                </div>
+            </td>
+        </tr>
+    </table>
+   
+        
+    
+</body>
+</html>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        $(function () {
+            Show();
+           Show3();
+           Show4();
+        });
+        function Show() {
+            $.ajax({
+                url: 'http://localhost:2789/api/Claf',
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select1").empty();
+                    $('#Select1').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                        $('#Select1').append(lin);
+                    })
+                }
+            })
+        }
+        //加载二级联动
+        function Show1() {
+            $.ajax({
+                url: 'http://localhost:2789/api/GetClaf',
+                type: 'get',
+                data: { ids: $('#Select1').val() },
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select2").empty();
+                    $('#Select2').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                        $('#Select2').append(lin);
+                    })
+                }
+            })
+        }
+        //加载三级联动
+        function Show2() {
+            $.ajax({
+                url: 'http://localhost:2789/api/GetClaf',
+                type: 'get',
+                data: { ids: $('#Select2').val() },
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select3").empty();
+                    $('#Select3').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                        $('#Select3').append(lin);
+                    })
+                }
+            })
+        }
+        //加载品牌
+        function Show3() {
+            $.ajax({
+                url: 'http://localhost:2789/api/Pinpai2',
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Brand").empty();
+                    $('#Brand').append('<option value="">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.brandid + '">' + this.bname + '</option>'
+                        $('#Brand').append(lin);
+                    })
+                }
+            })
+        }
+        //加载所有规格
+        function Show4() {
+            $.ajax({
+                url: 'http://localhost:2789/api/spec',
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    $("#Select4").empty();
+                    $('#Select4').append('<option value="  ">请选择</option>');
+                    $(d).each(function () {
+                        var lin = '<option value="' + this.sname + '">' + this.sname + '</option>'
+                        $('#Select4').append(lin);
+
+                    })
+                }
+            })
+        }
+        function CommAddsp() {
+            var name = $("#introduce").val() + $("#Select4").val();
+
+            $("#introduce").val(name);
+        }
+        function CommAdd() {
+            var obj = {
+                "Recommend": $("#Recommend").val(),
+                "Bidd": Number($("#Brand").val()),
+                "Pay" : $("#Pay").val(),
+                "Img" : $("#hi").val(),
+                "introduce": $("#introduce").val(),
+                "inventory": $("#inventory").val(),
+                "Cidd": Number( $("#Select3").val()),
+                "SCname": $("#tetName").val(),
+                "price": Number( $("#price").val())
+            };
+            console.log(obj);
+            //obj.Recommend = $("#Recommend").val();
+            //obj.Bidd = $("#Brand").val();
+            //obj.Pay = $("#Pay").val();
+            //obj.Img = $("#hi").val();
+            //obj.introduce = $("#introduce").val();
+            //obj.inventory = $("#inventory").val();
+            //obj.Cidd = $("#Select3").val();
+            //obj.Cname = $("#tetName").val();
+            //obj.price = $("#price").val();
+            var jsons = JSON.stringify(obj);
+       
+            $.ajax({
+                url: 'http://localhost:2789/api/CommAdd',
+                data: jsons,
+                type: 'post',
+                dataType:'json',
+                contentType: "application/json",
+            
+                success: function (d) {
+                    if (d > 0) {
+                        alert('添加成功！')
+                    }
+                    else {
+                        alert('添加失败！')
+                    }
+                }
+            })
+        }
+     
+
+    </script>

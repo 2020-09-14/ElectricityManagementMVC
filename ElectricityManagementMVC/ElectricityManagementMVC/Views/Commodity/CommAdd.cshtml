@@ -1,0 +1,188 @@
+﻿
+@{
+    ViewData["Title"] = "CommAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    
+
+    <title>.Net Core WebApi图片上传</title>
+    <meta charset="utf-8" />
+    <meta name="referrer" content="no-referrer">
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <style>
+    </style>
+</head>
+<body style="background-color:royalblue">
+    <div style="width:1431px;height: 800px;background-color:darkgrey;margin-top:20px;margin-left:212px">
+        <table class="table table-hover">
+            <tr>
+                <td>
+                    <h3 style="float:right">商品分类</h3>
+                </td>
+                <td>
+                    <select id="Select1" class="btn btn-info" onclick="Show1()">
+                        <option value="">请选择</option>
+
+                    </select>
+                    <select id="Select2" class="btn btn-info" onclick="Show2()">
+                        <option>请选择</option>
+
+                    </select>
+                    <select id="Select3" class="btn btn-info">
+                        <option>请选择</option>
+
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 style="float:right">商品名称</h3>
+                </td>
+                <td>
+                    <input type="text" id="tetName" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <h3 style="float:right">商品属性</h3>
+                </td>
+                <td>
+                    品牌
+                    <select id="Brand" class="btn btn-info">
+                        <option>请选择</option>
+
+                    </select>
+                    <a href="/Commodity/BrandAdd">新增品牌</a> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 style="float:right"> 推荐语</h3>
+                </td>
+                <td>
+                    <textarea class="form-control" rows="3"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 style="float:right">支付方式</h3> 
+                </td>
+                <td>
+                    <select id="Pay" class="btn btn-info">
+                        <option>线上</option>
+                        <option>线下</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 style="float:right"> 库存</h3>
+                </td>
+                <td>
+                    <input type="text" id="inventory" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3 style="float:right">售价</h3>
+                    
+                </td>
+                <td>
+                     <input type="text" id="price" />
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="2" >
+                    <div style="margin-left:316px">
+                        <input type="button" class="btn btn-info" value="确定" />
+                        <input type="button" class="btn btn-info" value="取消" />
+                    </div>
+                    
+                </td>
+            </tr>
+        </table>
+     
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        Show();
+        Show3();
+    }) 
+    //加载一级联动
+    function Show() {
+        $.ajax({
+            url: 'http://localhost:2789/api/Claf',
+            type: 'get',
+            dataType: 'json',
+            success: function (d) {
+                $("#Select1").empty();
+                $('#Select1').append('<option value="">请选择</option>');
+                $(d).each(function () {
+                    var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                    $('#Select1').append(lin);
+                })
+            }
+        })
+    }
+     //加载二级联动
+    function Show1() {
+        $.ajax({
+            url: 'http://localhost:2789/api/GetClaf',
+            type: 'get',
+            data: { ids: $('#Select1').val() },
+            dataType: 'json',
+            success: function (d) {
+                $("#Select2").empty();
+                $('#Select2').append('<option value="">请选择</option>');
+                $(d).each(function () {
+                    var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                    $('#Select2').append(lin);
+                })
+            }
+        })
+    }
+     //加载三级联动
+    function Show2() {
+        $.ajax({
+            url: 'http://localhost:2789/api/GetClaf',
+            type: 'get',
+            data: { ids: $('#Select2').val() },
+            dataType: 'json',
+            success: function (d) {
+                $("#Select3").empty();
+                $('#Select3').append('<option value="">请选择</option>');
+                $(d).each(function () {
+                    var lin = '<option value="' + this.classifyId + '">' + this.cname + '</option>'
+                    $('#Select3').append(lin);
+                })
+            }
+        })
+    }
+     //加载品牌
+    function Show3() {
+        $.ajax({
+            url: 'http://localhost:2789/api/Pinpai',
+            type: 'get',
+         
+            dataType: 'json',
+            success: function (d) {
+                $("#Brand").empty();
+                $('#Brand').append('<option value="">请选择</option>');
+                $(d).each(function () {
+                    var lin = '<option value="' + this.brandId + '">' + this.Bname + '</option>'
+                    $('#Brand').append(lin);
+                })
+            }
+        })
+    }
+</script>
