@@ -15,9 +15,6 @@
     <link href="~/新建文件夹/font/iconfont.css" rel="stylesheet" />
     <script src="~/新建文件夹/js/jquery.min.js"></script>
     <script src="~/新建文件夹/js/nav.js"></script>
-
-
-
     <style>
         html, body {
             width: 100%;
@@ -49,8 +46,7 @@
             </div>
             <div class="right-menu list-inline no-margin-bottom">
                 <div class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></div>
-                <div class="list-inline-item logout">                   <a id="logout" href="login.html" class="nav-link"> <span class="d-none d-sm-inline">登陆人 </span><i class="icon-logout"></i></a></div>
-
+                <div class="list-inline-item logout"> <a id="logout" href="login.html" class="nav-link"> <span class="d-none d-sm-inline">登陆人 </span><i class="icon-logout"></i></a></div>
             </div>
         </div>
     </nav>
@@ -84,9 +80,9 @@
                 <li class="nav-item">
                     <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span>订单管理</span><i class="my-icon nav-more"></i></a>
                     <ul>
-                        <li><a href="javascript:;"><span>订单列表</span></a></li>
+                        <li><a href="/Order/Index"><span>订单列表</span></a></li>
                         <li><a href="javascript:;"><span>订单设置</span></a></li>
-                        <li><a href="javascript:;"><span>运单列表</span></a></li>
+                        <li><a href="/Deliver/Index"><span>运单列表</span></a></li>
                         <li><a href="javascript:;"><span>取消原因</span></a></li>
                     </ul>
                 </li>
@@ -153,16 +149,15 @@
 
         </nav>
         <!-- Sidebar Navigation end-->
-        <div class="page-content" style="padding-bottom: 70px;background-color:white">
-           
-            @RenderBody()
 
-            <div>
+        <div class="page-content" style="padding-bottom: 70px; ">
+            <div class="page-header" style="background-color: #f2f2f2">
 
+                @RenderBody()
             </div>
-
-            <section>
-            </section>
+        </div>
+           
+        
             <footer class="footer">
                 <div class="footer__block block no-margin-bottom">
                     <div class="container-fluid text-center">

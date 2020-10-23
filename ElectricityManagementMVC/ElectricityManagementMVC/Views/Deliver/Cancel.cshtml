@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewData["Title"] = "Cancel";
+}
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+
+
+<div style="width:100%;height:80%">
+    <svg class="bi bi-list-ul" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+    </svg>
+    <span>数据列表</span>&nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-info " onclick="DelAll()">
+        <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+        </svg>
+        <span>删除</span>
+    </button>
+    <button class="btn btn-info" data-toggle="modal" data-target="#myModal">新增</button>
+   
+    <input id="Hidden1" value="1" type="hidden" /><input id="Hidden2" value="" type="hidden" />
+    <table class="table">
+        <tr style="background-color: #f2f2f2;">
+            <th><input type="checkbox" id="all"></th>
+            <th>序号</th>
+            <th>取消原因</th>
+            <th>备注信息</th>
+            <th>操作</th>
+        </tr>
+        <tbody id="tb">
+        </tbody>
+
+    </table>
+    <input type="checkbox" id="alll">全选
+    <div style="width:500px;height:200px; margin:0 auto ">
+        <input class="btn btn-info dropdown-toggle" id="bu1" type="button" value="上一页" onclick="fist()" />
+
+        <input style="text-align:center" id="bu1" class="btn btn-info dropdown-toggle" type="button" value="下一页" onclick="next()" />
+        <select id="Select1" onclick="Show()">
+            <option value="3">3</option>
+            <option value="6">6</option>
+            <option value="9">9</option>
+            <option value="12">12</option>
+        </select>
+    </div>
+</div>
+
+<div class="modal fade" id="myModa2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    编辑取消原因
+                </h4>
+            </div>
+            <div class="modal-body">
+                <span>取消原因</span>&emsp;<input id="Text3" type="text" />
+                <br />
+                <span>原因排序</span>&emsp;<input id="Text4" type="text" />
+                <br />
+                <span>备注信息</span>&emsp;
+                <textarea id="info" class="" style="width:300px;height:100px;margin-top:30px" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" class="btn btn-primary" onclick="xiugai()">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    添加取消原因
+                </h4>
+            </div>
+            <div class="modal-body">
+                <span>取消原因</span>&emsp;<input id="Text1" type="text" />
+                <br />
+                <span>原因排序</span>&emsp;<input id="Text2" type="text" />
+                <br />
+                <span>备注信息</span>&emsp;
+                <textarea id="Recommend" class="" style="width:300px;height:100px;margin-top:30px" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" class="btn btn-primary" onclick="ADDDD()">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+<script>
+    $(function () {
+        Show();
+
+    })
+
+    function Show() {
+        $.ajax({
+            url: "http://localhost:2789/api/GetordeCancel",
+            data: {
+                page: $("#Hidden1").val(),
+                pageSize: $("#Select1").val()
+            },
+            type: "get",
+            dataType: "json",
+            success: function (date) {
+                $("#Hidden2").val(date.counts);
+                $("#tb").empty();
+                $.each(date.lists, function (index, item) {
+                    var str = '<tr>' +
+                        '<td><input id="Checkbox1" type="checkbox"  value=' + item.ordeCancelId + ' name="sub" /></td>' +
+                        '<td>' + item.ordeCancelStateId + '</td>' +
+                        '<td>' + item.ordeCancelCause + '</td>' +
+                        '<td>' + item.ordeCancelInfo + '</td>' +
+                        '<td><a href="#" onclick="del(' + item.ordeCancelId + ')">删除</a>&nbsp;&nbsp;&nbsp; <a data-toggle="modal" data-target="#myModa2" href="#" onclick="bianji(' + item.ordeCancelId + ')">编辑</a></td>' +
+                        '</tr>'
+                    $("#tb").append(str);
+                })
+
+            }
+        })
+    }
+    function bianji(ids) {
+        sessionStorage.setItem("qwe", ids);
+        $.ajax({
+            url: "http://localhost:2789/api/GetOrdeEdit?ids="+ids,
+         
+            type: "get",
+            dataType: "json",
+            success: function (date) {
+                console.log(date);
+                $.each(date, function (index, item) {
+                    $("#Text4").val(item.ordeCancelStateId),
+                        $("#Text3").val(item.ordeCancelCause),
+                        $("#info").val(item.ordeCancelInfo)
+                })
+            },
+        })
+    
+    }
+    function xiugai() {
+        var obj = {
+            "ordeCancelId": parseInt(sessionStorage.getItem("qwe")),
+            "ordeCancelStateId": parseInt($("#Text4").val()),
+            "ordeCancelCause": $("#Text3").val(),
+            "ordeCancelInfo": $("#info").val()
+        }
+        var cc = JSON.stringify(obj);
+        console.log(obj);
+        $.ajax({
+            url: "http://localhost:2789/api/UptCancel",
+            type: "post",
+            data: cc,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (d) {
+                if (d > 0) {
+                    alert("修改成功！");
+                    window.location.href = "/Deliver/Cancel";
+                }
+            }
+        })
+    }
+    function ADDDD() {
+        var obj = {
+            "ordeCancelStateId": parseInt($("#Text2").val()),
+            "ordeCancelCause": $("#Text1").val(),
+            "ordeCancelInfo": $("#Recommend").val()
+        }
+        var cc = JSON.stringify(obj);
+        console.log(obj);
+        $.ajax({
+            url: "http://localhost:2789/api/AddCancel",
+            type: "post",
+            data: cc,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (d) {
+                if (d > 0) {
+                    alert("新增成功！");
+                    window.location.href ="/Deliver/Cancel";
+                }
+            }
+        })
+    }
+    function next() {
+
+        var i = $("#Hidden1").val();//页码
+        var j = $("#Select1").val();//页数
+        var count = $("#Hidden2").val();//总数据
+        var lin = Number(Math.ceil(count / j));
+
+        if (i < lin) {
+            $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
+        }
+
+        Show();
+
+    }
+    function fist() {
+        if ($("#Hidden1").val() == "1") {
+            $("#Hidden1").val(1);
+        }
+        else {
+            $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
+        }
+        Show();
+
+    }
+    function del(aa) {
+        $.ajax({
+            url: "http://localhost:2789/api/DelordeAll?ids=" + aa,
+            type: "get",
+            dataType: "json",
+            success: function (d) {
+                if (d > 0) {
+                    alert("删除成功");
+                    window.location.reload();
+                }
+                else {
+                    alert("删除失败");
+                }
+            }
+        });
+    }
+    function DelAll() {
+
+        var arr = new Array();
+        $('#tb input:checkbox[name=sub]:checked').each(function (i) {
+            arr[i] = $(this).val();
+        });
+        var vals = arr.join(",");
+        console.log(vals);
+        $.ajax({
+            url: "http://localhost:2789/api/DelordeAll?ids=" + vals,
+            type: "get",
+            dataType: "json",
+            success: function (d) {
+                if (d > 0) {
+                    alert("删除成功");
+                    window.location.reload();
+                }
+                else {
+                    alert("删除失败");
+                }
+            }
+        });
+    }
+
+    $("#all").on("click", function () {
+        $("input[name='sub']").prop('checked', this.checked);
+    });
+    $("input[name='sub']").on("click", function () {
+        var $sub = $("input[name='sub']");
+        $("#all").prop("checked", $sub.length == $sub.filter(":checked").length ? true : false);
+    })
+    $("#alll").on("click", function () {
+        $("input[name='sub']").prop('checked', this.checked);
+    });
+    $("input[name='sub']").on("click", function () {
+        var $sub = $("input[name='sub']");
+        $("#alll").prop("checked", $sub.length == $sub.filter(":checked").length ? true : false);
+    })
+</script>
+

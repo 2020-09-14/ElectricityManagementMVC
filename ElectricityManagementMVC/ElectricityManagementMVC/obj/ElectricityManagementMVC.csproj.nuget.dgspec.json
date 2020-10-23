@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {}
+    "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {
+    "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+        "projectUniqueName": "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
         "projectName": "ElectricityManagementMVC",
-        "projectPath": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
-        "packagesPath": "C:\\Users\\86176\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
+        "projectPath": "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+        "packagesPath": "C:\\Users\\T\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\86176\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\T\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,6 +44,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.0.0, )"
             }
           },
           "imports": [
