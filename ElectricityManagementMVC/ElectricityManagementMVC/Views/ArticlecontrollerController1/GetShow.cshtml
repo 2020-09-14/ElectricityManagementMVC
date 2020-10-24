@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewData["Title"] = "GetShow";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/VUE/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div class="demoTable" >
+    <div style="background-color:aliceblue;margin-bottom:15px">
+        
+        <div class="layui-inline">
+            <form class="layui-form" action="">
+                <label class="layui-form-label" style="width:100px">文章类型</label>
+                <div class="layui-input-inline">
+                    <select name="modules" lay-search="" id="quiz1" lay-verify="required">
+                        <option value="">请选择分类</option>
+                    </select>
+                </div>
+                </form>
+        </div>
+
+            <div class="layui-form-item" style="width:320px;float:left">
+                <label class="layui-form-label" style="width:100px">文章名称</label>
+                <div class="layui-input-block">
+                    <input id="txtName" name="title" class="layui-input" type="text" placeholder="请输入标题" autocomplete="off" lay-verify="title">
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnCha" class="layui-btn layui-btn-sm layui-btn-normal" data-type="btnCha" type="button"> <i class="layui-icon layui-icon-search"></i> 查询</button>
+        </div>
+
+    <div style="background-color:aliceblue">
+        <i class="layui-icon layui-icon-spread-left" style="font-size:25px;color:black">数据列表</i>&nbsp;&nbsp;
+        <button class="layui-btn layui-btn-sm layui-btn-normal" data-type="DelShan" type="button"><i class="layui-icon"></i> 删除</button>
+
+        <button style="float:right" class="layui-btn layui-btn-sm layui-btn-normal" data-type="Add" type="button"><i class="layui-icon layui-icon-add-1"></i> 添加</button>
+        
+        <table class="layui-hide" id="test" lay-filter="test"></table>
+    </div>
+        </div>
+    <script type="text/html" id="barDome">
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            <a class="layui-btn layui-btn-xs" lay-event="bj">编辑</a>
+            <a class="layui-btn layui-btn-xs" lay-event="zd">同类置顶</a>
+            <a class="layui-btn layui-btn-xs" lay-event="tj">栏目推荐</a>
+            <a class="layui-btn layui-btn-xs" lay-event="xq">文章详情</a>
+        
+    </script>
+
+
+        <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+        <script src="~/VUE/layui-v2.5.6/layui/layui.js"></script>
+        <script src="~/新建文件夹/js/jquery.min.js"></script>
+        <script>
+
+
+
+            //文章显示
+            layui.use('table', function () {
+                var table = layui.table;
+
+                table.render({
+                    elem: '#test'
+                    , url: 'http://localhost:2789/api/Thisqueries'
+                    , title: '文章管理'
+                    , method: 'get'
+                    , id:'testReload'
+                    , cols: [[
+                        { type: 'checkbox' }
+                        , { field: 'AID', width: 130, title: '序号', sort: true }
+                        , { field: 'Title', width: 170, title: '文章标题' }
+                        , { field: 'CName', width: 170, title: '类别', sort: true }
+                        , { field: 'ANumber', width: 160, title: '浏览数量' }
+                        , { field: 'Collect', width: 150, title: '收藏数量' }
+                        , { field: 'Transpond', width: 150, title: '转发数量', sort: true }
+                        , { field: 'Comment', width: 150, title: '评论数量', sort: true }
+                        , { field: 'Rank', width: 130, title: '排序', sort: true }
+                        , { field: 'wealth', width: 350, title: '操作', toolbar: '#barDome' }
+                    ]]
+                    , page: true
+                    , limit: 10
+                    , limits: [10, 20]
+                });
+
+                table.on('tool(test)', function (obj) {
+                    
+                    var data = obj.data; //获得当前行数据
+                    var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                    var tr = obj.tr;
+                    if (layEvent == 'del') {
+                        layer.confirm('真的删除行么', function (index) {
+                           
+                            obj.del();
+                            layer.close(index);
+
+                        });
+
+                    }
+                    else if (layEvent == 'bj') {
+
+                        window.location.href = "Add";
+                    }
+                    else if (layEvent =='zd') {
+
+                        layer.msg('类型置顶成功！');
+                    }
+                    else if (layEvent == 'tj') {
+
+                        layer.msg('栏目推荐成功！');
+                    }
+                    else if (layEvent == 'xq') {
+
+                        layer.open({
+                            type: 1,
+                            skin: 'layui-layer-rim', //加上边框
+                            area: ['420px', '240px'], //宽高
+                            id: 'LAY_layuipro',
+                            content: '<div>' + '<table>' + '<tr>' + '<td>' + data.Details + '</td>' + '</tr>' + '</table>' + '</div>'
+                        });
+                    }
+                });
+
+                layui.use(['form', 'layedit', 'laydate'], function () {
+                    var form = layui.form;
+                    $.ajax({
+                        url: 'http://localhost:2789/api/Binding',
+                        dataType: 'json',
+                        type: 'get',
+                        success: function (data) {
+                            $.each(data, function (index, item) {
+                                $('#quiz1').append(new Option(item.CName,item.CId));// 下拉菜单里添加元素
+                            });
+                            layui.form.render("select");
+                            //重新渲染 固定写法
+                        }
+                    })
+                })
+
+                var $ = layui.$, active = {
+                    DelShan: function () {
+                        if (confirm('确定删除')) {
+                            var ids = [];
+                            var checkStatus = table.checkStatus('testReload')
+                                ,
+                                data = checkStatus.data;
+
+                            for (var i = 0; i < data.length; i++) {
+                                ids += ',' + data[i].AID;
+                            }
+                            ids = ids.substr(1);
+
+                            $.ajax({
+                                url: "http://localhost:2789/api/DelmethodsAsync",
+                                type: "post",
+                                data: { SId: ids },
+                                success: function (d) {
+                                    if (d > 0) {
+                                        parent.layer.msg("删除成功！");
+                                        window.location.href = "GetShow";
+                                    }
+                                }
+                            })
+                        }
+                       
+                    }
+                    , btnCha: function () {
+                        table.reload('testReload', {
+                            page: {
+                                curr: 1 //重新从第 1 页开始
+                            }
+                            , where: {
+                                Title: $("#txtName").val(),
+                                Sort: $("#quiz1").val()
+
+                            }
+                        }, 'data');
+                    }
+                    , Add: function () {
+                        window.location.href = "/ArticlecontrollerController1/Add";
+                    }
+                };
+                $('.demoTable .layui-btn').on('click', function () {
+                    var type = $(this).data('type');
+                    active[type] ? active[type].call(this) : '';
+                });
+            });
+
+
+        </script>
+
+</body>
+</html>

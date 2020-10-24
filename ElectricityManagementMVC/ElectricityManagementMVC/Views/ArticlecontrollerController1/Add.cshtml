@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewData["Title"] = "Add";
+}
+
+<!DOCTYPE html>
+
+
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="~/VUE/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div style="background-color:aliceblue;height:700px">
+        <h2 style="margin-left:20px">新增文章</h2>
+
+        <form style="margin-top:20px" class="layui-form" action="">
+
+            <div class="layui-inline">
+                <label class="layui-form-label" style="width:110px;font-size:17px"><span class="layui-badge-dot"></span>文章类型</label>
+                <div class="layui-input-inline">
+                    <select name="modules" lay-search="" id="quiz1" lay-verify="required">
+                        <option value="">请选择分类</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label style="width:110px;font-size:17px" class="layui-form-label"><span class="layui-badge-dot"></span>文章标题</label>
+                <div class="layui-input-block">
+                    <input id="txtTitle" name="title" class="layui-input" type="text" placeholder="请输入标题" autocomplete="off" lay-verify="title">
+                </div>
+            </div>
+
+            <div class="layui-upload">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button class="layui-btn" id="test2" type="button">多图片上传</button>
+                <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                    预览图：
+                    <div class="layui-upload-list" id="demo2"></div>
+                </blockquote>
+            </div>
+
+            <div class="layui-form-item">
+                <label style="width:110px;font-size:17px" class="layui-form-label"><span class="layui-badge-dot"></span>当前状态</label>
+                <div class="layui-input-block">
+                    <input name="close" type="checkbox" lay-skin="switch" lay-text="ON|OFF">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label style="width:110px;font-size:17px" class="layui-form-label"><span class="layui-badge-dot"></span>文章详情</label>
+                <div class="layui-input-block">
+                    <textarea id="txtNei" class="layui-textarea" placeholder="请输入内容"></textarea>
+                </div>
+            </div>
+
+            <div style="margin-left:110px;margin-top:30px">
+                <button id="Add" class="layui-btn layui-btn-normal" type="button">提交</button>
+                <button id="Quxiao" class="layui-btn layui-btn-normal" type="button">取消</button>
+            </div>
+            
+
+        </form>
+    </div>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script src="~/VUE/layui-v2.5.6/layui/layui.js"></script>
+    <script src="~/新建文件夹/js/jquery.min.js"></script>
+    <script>
+
+        layui.use('table', function () {
+            var table = layui.table;
+
+            layui.use(['form', 'layedit', 'laydate'], function () {
+                var form = layui.form;
+                $.ajax({
+                    url: 'http://localhost:2789/api/Binding',
+                    dataType: 'json',
+                    type: 'get',
+                    success: function (d) {
+                        $.each(d, function (index, item) {
+                            var str = '<option value="' + item.CID + '">' + item.CName + '</option>';
+                            $('#quiz1').append(str);// 下拉菜单里添加元素
+                        });
+                        layui.form.render("select");
+                        //重新渲染 固定写法
+                    }
+                })
+            })
+
+            //upload.render({
+            //    elem: '#test2'
+            //    , url: 'https://httpbin.org/post' //改成您自己的上传接口
+            //    , multiple: true
+            //    , before: function (obj) {
+            //        //预读本地文件示例，不支持ie8
+            //        obj.preview(function (index, file, result) {
+            //            $('#demo2').append('<img src="' + result + '" alt="' + file.name + '" class="layui-upload-img">')
+            //        });
+            //    }
+            //    , done: function (res) {
+            //        //上传完毕
+            //    }
+            //});
+        });
+
+        $("#Add").click(function () {
+
+            var obj = {};
+            obj.Title = $("#txtTitle").val();
+            obj.CategoryId = $("#quiz1").val();
+            obj.Details = $("#txtNei").val();
+
+            $.ajax({
+                url: 'http://localhost:2789/api/AdditionAsync',
+                type: 'post',
+                data: obj,
+                dataType: 'json',
+                success: function (d) {
+                    if (d > 0) {
+                        window.location.href = "GetShow";
+                    }
+                }
+            })
+
+        })
+
+        $("#Quxiao").click(function () {
+            window.location.href = "GetShow";
+        })
+
+        
+
+    </script>
+
+</body>
+</html>
+
