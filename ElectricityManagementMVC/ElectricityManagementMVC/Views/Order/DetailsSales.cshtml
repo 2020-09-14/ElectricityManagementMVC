@@ -1,0 +1,225 @@
+﻿
+@{
+    ViewData["Title"] = "DetailsSales";
+}
+
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div style="  width: 100%;height: 800px;background-color: darkgrey" id="div1">
+    <input type="hidden" id="ss" value="@ViewBag.Is" />
+
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    取消订单
+                </h4>
+            </div>
+            <div class="modal-body">
+                <span>取消原因</span>&emsp;<select id="Select1">
+                    <option value="">请选择取消原因</option>
+                    <option value="用户重复下单">取消原因A</option>
+                    <option value="用户不想买了">取消原因B</option>
+                    <option value="用户买错了/信息填错了，重新下单">取消原因C</option>
+                    <option value="联系不上用户">取消原因D</option>
+                    <option value="商品无货">取消原因E</option>
+                    <option value="商品信息填写错误">取消原因F</option>
+                    <option value="用户收货地址填写错误">取消原因G</option>
+                </select>
+                <br />
+                <span>取消原因</span>&emsp;
+                <textarea id="Recommend" class="" style="width:300px;height:100px;margin-top:30px" rows="3"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    关闭
+                </button>
+                <button type="button" class="btn btn-primary" onclick="Add()">
+                    提交更改
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+@**@
+<script>
+    Show()
+    function Show() {
+        $.ajax({
+            url: "http://localhost:2789/api/DetailsSales?id=" + $("#ss").val(),
+            type: "get",
+            dataType: "json",
+            success: function (date) {
+                $("#div1").empty();
+                $.each(date, function (index, item) {
+                    var str = '<div style="width: 80%; height: 100px;  background-color: white; margin-right: 135px; margin-left: 150px; ">' +
+                        '<br />' +
+                        ' <br />' +
+                        ' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;' + '<span style="font-size:16px;color:black">退货单号</span>&nbsp;  &nbsp;' + '<span style="font-size:20px;color:black">' + item.orderNumber + '</span>' +
+                        '&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp; ' + '<button class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="motai(' + item.orderId + ')">拒绝退货</button>' +
+                        ' &emsp; &emsp; <button class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="motai(' + item.orderId + ')">同意退货</button>' +
+                        ' </div>' +
+                        '  <br />' +
+                        ' <div style="width: 80%; height: 240px;  background-color: white; margin-right: 135px; margin-left: 150px; ">' +
+                        '<div style=" width: 25%; height: 240px; float: left; margin-right: 20px; margin-left: 20px">' +
+                        ' <br />' +
+                        ' <p style="font-size:21px;color:black">&emsp;退货商品</p>' +
+                        ' <span style="font-size:14px;color:black"> &emsp;商品信息:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + item.GoodsName + '</span>' +
+                        '<span style="font-size:14px;color:black"> &emsp;单价:</span>&nbsp;<span style="font-size:14px;color:black">' + item.GoodsPrice + '</span>' +
+                        ' <span style="font-size:14px;color:black"> &emsp;数量:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + item.GoodsNum + '</span>' +
+                        ' <span style="font-size:14px;color:black"> &emsp;小计:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + (item.goodsNum * item.goodsPrice) + '</span>' +
+                        '<span style="font-size:14px;color:black"> &emsp;实付金额:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + item.GoodsPrice + '</span>' +
+                        '<span style="font-size:14px;color:black"> &emsp;应退金额:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + item.GoodsPrice + '</span>' +
+                        ' </div>' +
+                        ' <div style="width: 25%; height: 240px; float: left; margin-right: 20px; margin-left: 20px">' +
+                        '<br />' +
+                        ' <p style="font-size:21px;color:black">&emsp;退货原因</p>' +
+                        '<span style="font-size:14px;color:black"> &emsp;退货描述:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + item.SalesExchangeCause+ '</span><br /><br />' +
+                        ' <span style="font-size:14px;color:black"> &emsp;退货图片:</span>&emsp;<span style="font-size:14px;color:black">' + (item.goodsNum * item.goodsPrice) + '</span><br /><br />' +
+                        '  <br />' +
+                        ' <p style="font-size:21px;color:black">&emsp;退货单信息</p>' +
+                        '  <table class="table">' +
+                        ' <tr>' +
+                        '  <td>商品返回方式</td>' +
+                        ' <td>上门取件</td>' +
+                        '</tr>' +
+                        '<tr>'+
+                        ' <td>退货原因</td>' +
+                        ' <td>' + item.SalesExchangeCause + '</td>' +
+                        '</tr>' +
+                        '<tr>'+
+                        ' <td>收货地址</td>' +
+                        ' <td>' + item.BuyerAddressInfo + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>取货地址</td>' +
+                        ' <td>' + (item.Address + item.Adeltailedaddress) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>联系人</td>' +
+                        ' <td>' + (item.BuyerAddressName) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>手机号</td>' +
+                        ' <td>' + (item.BuyerAddressTel) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>申请时间</td>' +
+                        ' <td>' + (item.SalesTime) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>退款方式</td>' +
+                        ' <td>' + (item.orderPay == 1 ? "支付宝" : "微信") + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>订单号</td>' +
+                        ' <td>' + (item.OrderNumber) + '</td>' +
+                        ' </tr>' +
+                        ' <tbody >' +
+                        ' <tr>' +
+                        '<td>' + '<img src="http://localhost:2789' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
+                        ' <td>' + item.goodsPrice + '</td>' +
+                        '   <td>' + item.goodsNum + '</td>' +
+                        '  <td>' + (item.goodsNum * item.goodsPrice) + '</td>' +
+                        '  <td>0.00</td>' +
+                        '  <td>' + (item.goodsNum * item.goodsPrice) + '</td>' +
+                        ' </tr>' +
+                        '</tbody>' +
+                        ' </table>' +
+                        '<div style="float:right">' +
+                        '  <span style="font-size:14px;color:black"> &emsp;商品总额:</span>&emsp; &emsp;<span style="font-size:14px;color:black">' + (item.goodsNum * item.goodsPrice) + '</span><br /><br />' +
+                        '  <span style="font-size:14px;color:black"> &emsp;优惠金额:</span>&emsp;&emsp;<span style="font-size:14px;color:black">￥0.00</span><br /><br />' +
+                        ' <span style="font-size:14px;color:black"> &emsp;运费:</span>&emsp;&emsp; &emsp;&emsp;<span style="font-size:14px;color:black">￥8</span><br /><br />' +
+                        '  <span style="font-size:14px;color:red"> &emsp;  应付总额:</span>&emsp; &emsp;<span style="font-size:20px;color:red">' + (item.goodsNum * item.goodsPrice) + '</span><br />' +
+                        '</div>' +
+                        '<table>' +
+                        '<tr>' +
+                        ' <td>商品应退金额</td>' +
+                        ' <td>' + (item.goodsNum * item.goodsPrice) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>是否退运费</td>' +
+                        ' <td></td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>退款金额</td>' +
+                        ' <td>' + (item.goodsNum * item.goodsPrice) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>选择收货点</td>' +
+                        ' <td></td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>收货人姓名</td>' +
+                        ' <td>' + (BuyerAddressName) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>收货人手机号</td>' +
+                        ' <td>' + (BuyerAddressTel) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>收货地址</td>' +
+                        ' <td>' + (BuyerAddressInfo) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>详细地址</td>' +
+                        ' <td>' + (BuyerAddressInfo) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>邮政编码</td>' +
+                        ' <td>' + (item.goodsNum * item.goodsPrice) + '</td>' +
+                        ' </tr>' +
+                        '<tr>' +
+                        ' <td>备注信息</td>' +
+                        ' <td></td>' +
+                        ' </tr>' +
+                        '</table>'
+                        '  </div>';
+
+
+                    $("#div1").append(str);
+                })
+
+            }
+        })
+    }
+
+    function motai(aa) {
+        sessionStorage.setItem("aa", aa);
+    }
+    function Add() {
+        var obj = {
+            "OrdeCancelCause": $("#Select1").val(),
+            "OrdeCancelStateId": parseInt(sessionStorage.getItem("aa")),
+            "OrdeCancelInfo": $("#Recommend").val()
+        }
+        var cc = JSON.stringify(obj);
+        console.log(obj);
+        $.ajax({
+            url: "http://localhost:2789/api/UptAll",
+            type:"post",
+            data: cc,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (d) {
+                if (d > 0) {
+                    alert("取消成功！");
+                    Show();
+                }
+            }
+        })
+    }
+</script>

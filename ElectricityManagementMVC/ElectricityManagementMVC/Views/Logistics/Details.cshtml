@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="hidden"  id="hidden" value="@ViewBag.id"/>
+<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg" onclick="location.href='/Logistics/ShwoExperssages'" style="float:right">
+    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+</svg>
+<div id="table" >
+
+</div>
+<script>
+    Show();
+    function Show()
+    {
+        var id = $("#hidden").val();
+        $.ajax({
+            url: 'http://localhost:2789/api/DetailsExperssagesAsync',
+            data: { id: id },
+            dataType: 'json',
+            type: 'get',
+            success: function (data)
+            {
+                $("#table").empty();
+                $(data).each(function () {
+                    var html = '<h3>快递公司详情</h3>';
+                    html += '<div style="margin:10px">';
+                    html += '公司名称:' + this.EName+ '</div>';
+                    html += '<div style="margin:10px">';
+                    html += '菜鸟状态:</div>';
+                    html += '<div style="margin:10px">';
+                    html += '网点状态:' + (this.Bid==1?"已开通":"未开通") + '</div>';
+                    html += '<div style="ma1rgin:10px">';
+                    html += '京东状态:' + (this.Jid==1?"已开通":"未开通") + '</div>';
+                    html += '<div style="margin:10px">';
+                    html += '客服电话:' + this.Ephone + '</div>';
+                    html += '<div style="margin:10px">';
+                    html += '官方网址:' + this.Eofficial + '</div>';
+                    $("#table").append(html);
+                })
+            }
+        })
+    }
+</script>

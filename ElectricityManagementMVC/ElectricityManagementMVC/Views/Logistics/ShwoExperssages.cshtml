@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "ShwoExperssages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/新建文件夹/js/jquery.min.js"></script>
+<link href="~/bootstrap-4.5.0-dist/css/bootstrap.css" rel="stylesheet" />
+<script src="~/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+
+<table>
+    <tr>
+        <td>当前状态
+            <select>
+                <option value="">请选择</option>
+                <option value="0">未开通</option>
+                <option value="1">已开通</option>
+            </select>
+        </td>
+        <td>客服电话<input type="text" id="EName" /></td>
+        <td>企业名称<input type="text" id="Eofficial" /></td>
+        <td><input type="button" value="搜索" onclick="Show()" /></td>
+    </tr>
+</table>
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title">模态框头部</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- 模态框主体 -->
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td >商家编码</td>
+                        <td><input type="text" id="Bmerchant"/></td>
+                    </tr>
+                    <tr>
+                        <td> 校验字段</td>
+                        <td><input type="text" id="Bcheckout"/></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="确定" onclick="Add()"/></td>
+                        <td><button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<table class="table layui-table">
+    <thead>
+        <tr>
+            <td><input type="checkbox" id="checknox" checkbox/></td>
+            <td>序号</td>
+            <td>企业名称</td>
+            <td> 客服电话</td>
+            <td>官方网址</td>
+            <td>操作</td>
+            <td>查看详情</td>
+        </tr>
+    </thead>
+    <tbody id="table">
+    </tbody>
+</table>
+<script>
+    $(function () {
+        Show();
+    })
+    function Show() {
+        var EName = $("#EName").val();
+        var Eofficial = $("#Eofficial").val();
+        $.ajax({
+            url: 'http://localhost:2789/api/ExperssagesAsync',
+            data: { EName: EName, Eofficial: Eofficial },
+            dataType: 'json',
+            type: 'get',
+            success: function (data) {
+                $("#table").empty();
+                $(data).each(function () {
+                    var html = '<tr>';
+                    html += '<td></td>';
+                    html += '<td>' + this.EName + '</td>';
+                    html += '<td>' + this.Ephone + '</td>';
+                    html += '<td>' + this.Eofficial + '</td>';
+                    html += '<td>' + this.Eid + '</td>';
+                    html += '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">申请开通</button ></td>';
+                    html += '<td><a onclick="Xiangqing(' + this.Eid + ')">查看详情</a></td>';
+                    html += '</tr>';
+                    $("#table").append(html);
+                })
+            }
+        })
+    }
+    function Xiangqing(id) {
+        location.href = '/Logistics/Details?id=' + id;
+    }
+    function Add() {
+        var b = {};
+        b.Bmerchant = $("#Bmerchant").val();
+        b.Bcheckout = $("#Bcheckout").val();
+        $.ajax({
+            url: 'http://localhost:2789/api/AddBranchAsync',
+            data: b,
+            type: 'post',
+            success: function (data) {
+                alert(data);
+                if (data > 0) {
+                    alert("添加成功");
+                    Show();
+                }
+                else {
+                    alert("添加失败");
+                }
+            }
+        })
+    }
+</script>

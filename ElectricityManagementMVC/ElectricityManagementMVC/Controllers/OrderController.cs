@@ -21,5 +21,16 @@ namespace ElectricityManagementMVC.Controllers
             ViewBag.Is = ids;
             return View();
         }
+
+        public IActionResult ShowSales()
+        {
+            return View();
+        }
+
+        public IActionResult DetailsSales(int id)
+        {
+            ViewBag.Is = id;
+            return View();
+        }
     }
 }

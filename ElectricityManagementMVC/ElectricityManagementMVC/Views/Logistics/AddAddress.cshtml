@@ -1,0 +1,110 @@
+﻿
+@{
+    ViewData["Title"] = "AddAddress";
+}
+
+<h1 style="color:white">新增地址</h1>
+<link href="https://cdn.bootcss.com/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+<link href="~/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+<link href="~/201712091431/dist/checkbox.css" rel="stylesheet" />
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">地址简称</label>
+        <input type="text" class="form-control" id="Abbreviation" placeholder="地址简称">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">联系人</label>
+        <input type="text" class="form-control" id="Aconsigner" placeholder="联系人">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">手机号</label>
+        <input type="text" class="form-control" id="Aphone" placeholder="11位手机号">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">地址</label>
+        <div class="layui-input-inline">
+            <select id="s_province" name="s_province"></select>
+            <select id="s_city" name="s_city"></select>
+            <select id="s_county" name="s_county"></select>
+            <script class="resources library" src="~/area.js" type="text/javascript"></script>
+            <script type="text/javascript">_init_area();</script>
+        </div>
+        <div id="show"></div>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">详情地址</label>
+        <input type="text" class="form-control" id="Adeltailedaddress" placeholder="请输入详情地址">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">设为收货点</label>
+        <input type="checkbox" id="Adeliverypoint" name="my-checkbox" checked>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">设为发货点</label>
+        <input type="checkbox" id="Areceivingpoint" name="my-checkbox" checked>
+    </div>
+    <input type="button" class="btn btn-default" style="background-color:blue" onclick="Addc()" value="提交" />
+</form>
+<script src="~/layui-v2.5.6/layui/layui.js"></script>
+<script>
+
+    $('input[name="my-checkbox"]').bootstrapSwitch({
+        "onColor": "success",
+        "offColor": "success",
+        "onText": true,
+        "offText": false
+    });
+    var Gid = document.getElementById;
+    var showArea = function () {
+        var province = Gid('s_province').value;
+        var city = Gid('s_city').value;
+        var county = Gid('s_county').value;
+        if (province == city) {
+            city = "";
+        }
+        Gid("txtAddress").value = province + city + county;
+    }
+    function Addc() {
+        if ($("input[type='my-checkbox']").is(':checked') == true) {
+            var a = {
+                "Abbreviation": $("#Abbreviation").val(),
+                "Aconsigner": $("#Aconsigner").val(),
+                "Aphone": $("#Aconsigner").val(),
+                "Address": $("#s_province").val() + $("#s_city").val() + $("#s_county").val(),
+                "Adeltailedaddress": $("#Adeltailedaddress").val(),
+                "Adeliverypoint": true,
+                "Areceivingpoint": true
+            };
+        } else {
+            var a = {
+                "Abbreviation": $("#Abbreviation").val(),
+                "Aconsigner": $("#Aconsigner").val(),
+                "Aphone": $("#Aconsigner").val(),
+                "Address": $("#s_province").val() + $("#s_city").val() + $("#s_county").val(),
+                "Adeltailedaddress": $("#Adeltailedaddress").val(),
+                "Adeliverypoint": false,
+                "Areceivingpoint": false
+            };
+        }
+        var json1 = JSON.stringify(a);
+        $.ajax({
+            url: 'http://localhost:2789/api/AddAddressAsync',
+            data: json1,
+            type: 'post',
+            dataType: "json",
+            contentType: "application/json",
+            success: function (data) {
+                if (data > 0) {
+                    alert("添加成功");
+                    location.href = '/Logistics/Index';
+                }
+                else {
+                    alert("添加失败");
+                }
+            }
+        })
+    }
+</script>
+

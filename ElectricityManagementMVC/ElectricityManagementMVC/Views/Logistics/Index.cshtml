@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="button" value="添加" onclick="location.href='/Logistics/AddAddress'"/>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>序号</td>
+            <td>地址简称</td>
+            <td>发货人</td>
+            <td>手机号</td>
+            <td>详情地址</td>
+            <td>设为发货点</td>
+            <td>设为收货点</td>
+            <td>操作</td>
+        </tr>
+    </thead>
+    <tbody id="table">
+
+    </tbody>
+</table>
+
+<script>
+    $(function () {
+        Show();
+    })
+    function Show()
+    {
+        $.ajax({
+            url: 'http://localhost:2789/api/GetAddressesAsync',
+            dataType: 'json',
+            type: 'get',
+            success: function (data)
+            {
+                $("#table").empty();
+                $(data).each(function () {
+                    var html = '<tr>';
+                    html += '<td>' + this.Aid + '</td>';
+                    html += '<td>' + this.Abbreviation + '</td>';
+                    html += '<td>' + this.Aconsigner + '</td>';
+                    html += '<td>' + this.Aphone + '</td>';
+                    html += '<td>' + this.Address+ ''+this.Adeltailedaddress + '</td>';
+                    html += '<td>' + this.Adeliverypoint + '</td>';
+                    html += '<td>' + this.Areceivingpoint + '</td>';
+                    html += '<td><a onclick="Del(' + this.Aid + ')">删除</a>&nbsp&nbsp&nbsp<a onclick="Upt(' + this.Aid +')">编辑</a></td>';
+                    html += '</tr>';
+                    $("#table").append(html);
+                })
+            }
+        })
+    }
+    //删除
+    function Del(id)
+    {
+        if (confirm("确定要删除吗")) {
+            $.ajax({
+                url: 'http://localhost:2789/api/DelAddressAsync?id=' + id,
+                dataType: 'json',
+                type: 'post',
+                success: function (data) {
+                    if (data > 0) {
+                        alert("删除成功");
+                        Show();
+                    }
+                    else {
+                        alert("删除失败");
+                    }
+                }
+            })
+        }
+    }
+    //更新
+    function Upt(id)
+    {
+        location.href = "/Logistics/UptAddress?id=" + id;
+    }
+</script>
