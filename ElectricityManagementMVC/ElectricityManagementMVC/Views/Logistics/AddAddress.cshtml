@@ -67,26 +67,32 @@
         Gid("txtAddress").value = province + city + county;
     }
     function Addc() {
-        if ($("input[type='my-checkbox']").is(':checked') == true) {
-            var a = {
-                "Abbreviation": $("#Abbreviation").val(),
-                "Aconsigner": $("#Aconsigner").val(),
-                "Aphone": $("#Aconsigner").val(),
-                "Address": $("#s_province").val() + $("#s_city").val() + $("#s_county").val(),
-                "Adeltailedaddress": $("#Adeltailedaddress").val(),
-                "Adeliverypoint": true,
-                "Areceivingpoint": true
-            };
-        } else {
-            var a = {
-                "Abbreviation": $("#Abbreviation").val(),
-                "Aconsigner": $("#Aconsigner").val(),
-                "Aphone": $("#Aconsigner").val(),
-                "Address": $("#s_province").val() + $("#s_city").val() + $("#s_county").val(),
-                "Adeltailedaddress": $("#Adeltailedaddress").val(),
-                "Adeliverypoint": false,
-                "Areceivingpoint": false
-            };
+        if (!(/^1[3456789]\d{9}$/.test($("#Aphone").val()))) {
+            alert("手机号码有误，请重填");
+            return;
+        }
+        else {
+            if ($("input[type='my-checkbox']").is(':checked') == true) {
+                var a = {
+                    "Abbreviation": $("#Abbreviation").val(),
+                    "Aconsigner": $("#Aconsigner").val(),
+                    "Aphone": $("#Aphone").val(),
+                    "Address": $("#s_province").val() + $("#s_city").val() + $("#s_county").val(),
+                    "Adeltailedaddress": $("#Adeltailedaddress").val(),
+                    "Adeliverypoint": true,
+                    "Areceivingpoint": true
+                };
+            } else {
+                var a = {
+                    "Abbreviation": $("#Abbreviation").val(),
+                    "Aconsigner": $("#Aconsigner").val(),
+                    "Aphone": $("#Aphone").val(),
+                    "Address": $("#s_province").val() + $("#s_city").val() + $("#s_county").val(),
+                    "Adeltailedaddress": $("#Adeltailedaddress").val(),
+                    "Adeliverypoint": false,
+                    "Areceivingpoint": false
+                };
+            }
         }
         var json1 = JSON.stringify(a);
         $.ajax({

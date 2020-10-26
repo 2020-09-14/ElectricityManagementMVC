@@ -35,7 +35,6 @@ E:\专高六\练习\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\
 E:\专高六\练习\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.pdb
 E:\专高六\练习\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.genruntimeconfig.cache
 E:\专高六\练习\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.csproj.CopyComplete
-<<<<<<< HEAD
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -47,7 +46,6 @@ C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagement
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\ElectricityManagementMVC.pdb
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\ElectricityManagementMVC.Views.dll
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\ElectricityManagementMVC.Views.pdb
-C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.csprojAssemblyReference.cache
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.AssemblyInfoInputs.cache
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.AssemblyInfo.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.RazorAssemblyInfo.cache
@@ -161,7 +159,6 @@ C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagement
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Logistics\Details.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Logistics\AddAddress.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Logistics\UptAddress.cshtml.g.cs
-=======
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -278,7 +275,6 @@ C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\Elec
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\ArticlecontrollerController1\Bang.cshtml.g.cs
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\ArticlecontrollerController1\Gai.cshtml.g.cs
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\SalesExchange\TuiShow.cshtml.g.cs
->>>>>>> 85d4fe79577c14fde8662664900e3414964497a6
 C:\Users\T\Desktop\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\T\Desktop\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\T\Desktop\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -674,7 +670,6 @@ C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagement
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\Index.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\orderDetails.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\ShowSales.cshtml.g.cs
->>>>>>> ad1d0cf2a13f43cf3e142e23673d8cf68ccb3d79
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Commodity\Brand.cshtml.g.cs
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Commodity\BrandAdd.cshtml.g.cs
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Commodity\CommAdd.cshtml.g.cs
@@ -694,3 +689,6 @@ C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagement
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\ArticlecontrollerController1\Gai.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\ArticlecontrollerController1\GetShow.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\SalesExchange\TuiShow.cshtml.g.cs
+C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.csprojAssemblyReference.cache
+C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\ConsentExchangeGoods.cshtml.g.cs
+C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\TakeDeliveryGoods.cshtml.g.cs

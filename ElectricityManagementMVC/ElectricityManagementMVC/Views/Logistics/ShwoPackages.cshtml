@@ -71,6 +71,7 @@
 <table class="table table-sm">
     <thead>
         <tr>
+            <th scope="col"><input type="checkbox" value="" id="ck" /></th>
             <th scope="col">快递公司</th>
             <th scope="col">快递单号</th>
             <th scope="col">发货时间</th>
@@ -88,6 +89,13 @@
 <script>
     $(function () {
         Show();
+        $("#ck").click(function () {
+            $(".ck").each(function () {
+
+                $(this).attr("checked", !$(this).attr("checked"))
+            })
+
+        })
     })
     function Show() {
         var Pstate = $("#Pstate").val();
@@ -104,16 +112,16 @@
                 $("#tb").empty();
                 $(data).each(function () {
                     var html = '<tr>';
+                    html += '<td><input class="ck" type="checkbox"   value="' + this.Pid + '" /></td>';
                     html += '<td>' + this.EName + '</td>';
                     html += '<td>' + this.Podd + '</td>';
                     html += '<td>' + this.Ptime + '</td>';
-                    html += '<td><input type="checkbox"/></td>';
                     html += '<td>' + this.OrderNumber + '</td>';
                     html += '<td>' + this.Pstate + '</td>';
                     html += '<td>' + this.Panomaly + '</td>';
                     html += '<td>' + this.Panomalytime + '</td>';
                     html += '<td>' + (this.PapprovalStatus = 1 ? "已处理" : "未处理") + '</td>';
-                    html += '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Upt(' + this.Pid + ')">打开模态框</button></td>';
+                    html += '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Upt(' + this.Pid + ')">处理异常</button></td>';
                     html += '</tr>';
                     $("#tb").append(html);
                 })

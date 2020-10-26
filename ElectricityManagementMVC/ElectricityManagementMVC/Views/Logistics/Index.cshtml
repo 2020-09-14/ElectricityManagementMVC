@@ -3,7 +3,15 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<input type="button" value="添加" onclick="location.href='/Logistics/AddAddress'"/>
+<link href="https://cdn.bootcss.com/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
+<link href="~/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
+<link rel="stylesheet" href="static/stylesheets/bootstrap-switch.css" />
+<script src="~/bootstrap-4.5.0-dist/jquery-3.4.1.min.js"></script>
+
+
+<input type="button" value="添加" onclick="location.href='/Logistics/AddAddress'" />
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -18,7 +26,6 @@
         </tr>
     </thead>
     <tbody id="table">
-
     </tbody>
 </table>
 
@@ -26,14 +33,12 @@
     $(function () {
         Show();
     })
-    function Show()
-    {
+    function Show() {
         $.ajax({
             url: 'http://localhost:2789/api/GetAddressesAsync',
             dataType: 'json',
             type: 'get',
-            success: function (data)
-            {
+            success: function (data) {
                 $("#table").empty();
                 $(data).each(function () {
                     var html = '<tr>';
@@ -41,10 +46,10 @@
                     html += '<td>' + this.Abbreviation + '</td>';
                     html += '<td>' + this.Aconsigner + '</td>';
                     html += '<td>' + this.Aphone + '</td>';
-                    html += '<td>' + this.Address+ ''+this.Adeltailedaddress + '</td>';
-                    html += '<td>' + this.Adeliverypoint + '</td>';
-                    html += '<td>' + this.Areceivingpoint + '</td>';
-                    html += '<td><a onclick="Del(' + this.Aid + ')">删除</a>&nbsp&nbsp&nbsp<a onclick="Upt(' + this.Aid +')">编辑</a></td>';
+                    html += '<td>' + this.Address + '' + this.Adeltailedaddress + '</td>';
+                    html += '<td>' + (this.Adeliverypoint == true ? "是" : "否") + '</td>';
+                    html += '<td>' + (this.Areceivingpoint == true?"是":"否") + '</td>';
+                    html += '<td><a onclick="Del(' + this.Aid + ')">删除</a>&nbsp&nbsp&nbsp<a onclick="Upt(' + this.Aid + ')">编辑</a></td>';
                     html += '</tr>';
                     $("#table").append(html);
                 })
@@ -52,8 +57,7 @@
         })
     }
     //删除
-    function Del(id)
-    {
+    function Del(id) {
         if (confirm("确定要删除吗")) {
             $.ajax({
                 url: 'http://localhost:2789/api/DelAddressAsync?id=' + id,
@@ -72,8 +76,7 @@
         }
     }
     //更新
-    function Upt(id)
-    {
+    function Upt(id) {
         location.href = "/Logistics/UptAddress?id=" + id;
     }
 </script>

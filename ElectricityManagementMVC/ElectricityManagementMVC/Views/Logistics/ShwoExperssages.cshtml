@@ -7,10 +7,13 @@
 <link href="~/bootstrap-4.5.0-dist/css/bootstrap.css" rel="stylesheet" />
 <script src="~/bootstrap-4.5.0-dist/js/bootstrap.js"></script>
 
+
+
 <table>
     <tr>
-        <td>当前状态
-            <select>
+        <td>
+            当前状态
+            <select id="">
                 <option value="">请选择</option>
                 <option value="0">未开通</option>
                 <option value="1">已开通</option>
@@ -35,15 +38,15 @@
             <div class="modal-body">
                 <table>
                     <tr>
-                        <td >商家编码</td>
-                        <td><input type="text" id="Bmerchant"/></td>
+                        <td>商家编码</td>
+                        <td><input type="text" id="Bmerchant" /></td>
                     </tr>
                     <tr>
                         <td> 校验字段</td>
-                        <td><input type="text" id="Bcheckout"/></td>
+                        <td><input type="text" id="Bcheckout" /></td>
                     </tr>
                     <tr>
-                        <td><input type="button" value="确定" onclick="Add()"/></td>
+                        <td><input type="button" value="确定" onclick="Add()" /></td>
                         <td><button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button></td>
                     </tr>
                 </table>
@@ -55,7 +58,7 @@
 <table class="table layui-table">
     <thead>
         <tr>
-            <td><input type="checkbox" id="checknox" checkbox/></td>
+            <td><input type="checkbox" id="checknox" checkbox /></td>
             <td>序号</td>
             <td>企业名称</td>
             <td> 客服电话</td>
@@ -83,11 +86,11 @@
                 $("#table").empty();
                 $(data).each(function () {
                     var html = '<tr>';
-                    html += '<td></td>';
+                    html += '<td><input type="checkbox" id="checknox" checkbox/></td>';
+                    html += '<td>' + this.Eid + '</td>';
                     html += '<td>' + this.EName + '</td>';
                     html += '<td>' + this.Ephone + '</td>';
-                    html += '<td>' + this.Eofficial + '</td>';
-                    html += '<td>' + this.Eid + '</td>';
+                    html += '<td><a href="' + this.Eofficial + '">' + this.Eofficial + '</a></td>';
                     html += '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">申请开通</button ></td>';
                     html += '<td><a onclick="Xiangqing(' + this.Eid + ')">查看详情</a></td>';
                     html += '</tr>';
@@ -100,12 +103,14 @@
         location.href = '/Logistics/Details?id=' + id;
     }
     function Add() {
-        var b = {};
-        b.Bmerchant = $("#Bmerchant").val();
-        b.Bcheckout = $("#Bcheckout").val();
+        var b = {
+            "Bmerchant": $("#Bmerchant").val(),
+            "Bcheckout": $("#Bcheckout").val()
+        };
+        var josn = JSON.stringify(b);
         $.ajax({
             url: 'http://localhost:2789/api/AddBranchAsync',
-            data: b,
+            data: josn,
             type: 'post',
             success: function (data) {
                 alert(data);
