@@ -57,7 +57,7 @@ namespace ElectricityManagementMVC.Controllers
             return View();
         }
         //显示退货列表-拒绝退货
-        public IActionResult RejectGoods(int id) 
+        public IActionResult RejectGoods(int id)
         {
             ViewBag.Is = id;
             return View();
