@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {}
+    "C:\\Users\\guisu\\Desktop\\电商\\mvc\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {}
   },
   "projects": {
-    "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {
+    "C:\\Users\\guisu\\Desktop\\电商\\mvc\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+        "projectUniqueName": "C:\\Users\\guisu\\Desktop\\电商\\mvc\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
         "projectName": "ElectricityManagementMVC",
-        "projectPath": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
-        "packagesPath": "C:\\Users\\86176\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\86176\\Desktop\\电商后台管理MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
+        "projectPath": "C:\\Users\\guisu\\Desktop\\电商\\mvc\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+        "packagesPath": "C:\\Users\\guisu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\guisu\\Desktop\\电商\\mvc\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\86176\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\guisu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

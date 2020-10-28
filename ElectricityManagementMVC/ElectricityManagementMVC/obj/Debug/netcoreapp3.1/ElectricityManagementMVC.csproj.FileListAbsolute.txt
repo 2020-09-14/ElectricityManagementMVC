@@ -723,3 +723,5 @@ C:\Users\86176\Desktop\电商后台管理MVC\ElectricityManagementMVC\Electricit
 C:\Users\86176\Desktop\电商后台管理MVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\ShowSales.cshtml.g.cs
 C:\Users\86176\Desktop\电商后台管理MVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\TakeDeliveryGoods.cshtml.g.cs
 C:\Users\86176\Desktop\电商后台管理MVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\SalesExchange\TuiShow.cshtml.g.cs
+C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Commodity\SpelShow.cshtml.g.cs
+C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Commodity\SpelShow2.cshtml.g.cs

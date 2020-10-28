@@ -4,7 +4,7 @@
 }
 
 <h1>编辑地址</h1>
-<input type="hidden" id="hidden" value="@ViewBag.id" />
+<input type="hidden" id="Aid" value="@ViewBag.id" />
 <link href="https://cdn.bootcss.com/bootstrap-switch/3.3.4/css/bootstrap3/bootstrap-switch.min.css" rel="stylesheet">
 <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-switch/3.3.4/js/bootstrap-switch.min.js"></script>
@@ -71,7 +71,7 @@
         Gid("txtAddress").value = province + city + county;
     }
     function Fantian() {
-        var id = $("#hidden").val();
+        var id = $("#Aid").val();
         $.ajax({
             url: 'http://localhost:2789/api/FandAddressAsync?id=' + id,
             dataType: 'json',
@@ -113,12 +113,10 @@
                 "Areceivingpoint": false
             };
         }
-
-        console.log(a);
-        var json1 = JSON.stringify(a);
+        var josn = JSON.stringify(a);
         $.ajax({
             url: 'http://localhost:2789/api/AddAddressAsync',
-            data: json1,
+            data: josn,
             type: 'post',
             dataType: "json",
             contentType: "application/json",

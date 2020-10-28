@@ -3,8 +3,7 @@
     ViewData["Title"] = "ShwoPackages";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
 <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <input type="hidden" id="hidden" value="@ViewBag.id"/>
@@ -28,19 +27,10 @@
         <th><input type="button" value="搜索" onclick="Show()" /></th>
     </tr>
 </table>
-<table>
-    <tr>
-        <td><a href="#" id="" onclick="Show()">全部</a>&nbsp;&nbsp;&nbsp;</td>
-        <td><a href="#" id="Panomaly" onclick="Show()">揽收异常</a>&nbsp;&nbsp;&nbsp;</td>
-        <td><a href="#" id="Panomaly" onclick="Show()">运转异常</a>&nbsp;&nbsp;&nbsp;</td>
-        <td><a href="#" id="Panomaly" onclick="Show()">派签异常</a>&nbsp;&nbsp;&nbsp;</td>
-        <td><a href="#" id="Panomaly" onclick="Show()">无异常</a></td>
-    </tr>
-</table>
 <div class="modal fade" id="myModal">
     <div class="modal-dialog">
         <div class="modal-content">   
-           <div class="modal-header">
+            <div class="modal-header">
                 <h4 class="modal-title">处理异常</h4>
             </div>
             <div class="modal-body">
@@ -83,23 +73,12 @@
             <th scope="col">操作</th>
         </tr>
     </thead>
-    <tbody id="tb">
+    <tbody id="table">
     </tbody>
 </table>
-<div style="width:500px;height:200px; margin:0 auto ">
-    <input class="btn btn-info dropdown-toggle" id="bu1" type="button" value="上一页" onclick="fist()" />
-
-    <input style="text-align:center" id="bu1" class="btn btn-info dropdown-toggle" type="button" value="下一页" onclick="next()" />
-    <select id="Select1" onclick="Show()">
-        <option value="3">3</option>
-        <option value="6">6</option>
-        <option value="9">9</option>
-        <option value="12">12</option>
-    </select>
-</div>
 <script>
     $(function () {
-        Show(1);
+        Show();
         $("#ck").click(function () {
             $(".ck").each(function () {
 
@@ -120,7 +99,7 @@
             dataType: 'json',
             type: 'get',
             success: function (data) {
-                $("#tb").empty();
+                $("#table").empty();
                 $(data).each(function () {
                     var html = '<tr>';
                     html += '<td><input class="ck" type="checkbox"   value="' + this.Pid + '" /></td>';
@@ -134,33 +113,10 @@
                     html += '<td>' + (this.PapprovalStatus = 1 ? "已处理" : "未处理") + '</td>';
                     html += '<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="Upt(' + this.Pid + ')">处理异常</button></td>';
                     html += '</tr>';
-                    $("#tb").append(html);
+                    $("#table").append(html);
                 })
             }
         })
-    }
-    function next() {
-        var i = $("#Hidden1").val();//页码
-        var j = $("#Select1").val();//页数
-        var count = $("#Hidden2").val();//总数据
-        var lin = Number(Math.ceil(count / j));
-
-        if (i < lin) {
-            $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
-        }
-
-        Show();
-
-    }
-    function fist() {
-        if ($("#Hidden1").val() == "1") {
-            $("#Hidden1").val(1);
-        }
-        else {
-            $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
-        }
-        Show();
-
     }
     function Upt(id)
     {
