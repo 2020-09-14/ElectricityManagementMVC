@@ -282,7 +282,7 @@
                             + '<td>' + (item.state == 1 ? "在售中" : item.state == 2 ? "已售馨" : item.state == 3 ? "已下架" : "已下架") + '</td>'
                             + '<td>' + item.price + '</td>'
                             + '<td>' + item.creaTime + '</td>'
-                            + '<td><a href="#" onclick = "del(' + this.commodityId + ')"><p>删除</p></td>'
+                            + '<td><a href="#" onclick = "del(' + this.commodityId + ')"><p>删除</p> <a href="#" onclick = "Huan(' + this.commodityId + ')"><p>还原</p></td>'
                             + '</tr>'
                         $('#tb').append(line);
                     })
@@ -380,6 +380,23 @@
                     }
                     else {
                         alert('删除失败!')
+                    }
+                }
+            })
+        }
+        function Huan(ids) {
+            $.ajax({
+                url: 'http://localhost:2789/api/Huan',
+                data: { ids: ids },
+                type: 'get',
+                dataType: 'json',
+                success: function (d) {
+                    if (d > 0) {
+                        alert('还原成功!')
+                        Show("");
+                    }
+                    else {
+                        alert('还原失败!')
                     }
                 }
             })

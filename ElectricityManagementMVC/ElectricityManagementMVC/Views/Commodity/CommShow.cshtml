@@ -181,7 +181,7 @@
         <script>
             function next() {
                 var i = $("#Hidden1").val();//页码
-                var j = $("#Select1").val();//页数
+                var j = $("#yema").val();//页数
                 var count = $("#Hidden2").val();//总数据
                 var lin = Number(Math.ceil(count / j));
 
@@ -189,7 +189,7 @@
                     $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
                 }
 
-                Xian();
+                Show();
 
             }
             function fist() {
@@ -199,7 +199,7 @@
                 else {
                     $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
                 }
-                Xian();
+                Show();
 
             }
         </script>

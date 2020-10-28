@@ -1,0 +1,112 @@
+﻿
+@{
+    ViewData["Title"] = "SpelShow2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>分类显示</h1>
+<div style="width:100%;height:150px;margin-left: 170px;margin-top:50px" id="date">
+
+    当前状态
+    <select id="Ststettt">
+        <option value="">请选择</option>
+        <option value="1">启用</option>
+        <option value="0">禁用</option>
+    </select>
+    分类名称
+    <input type="text" id="txtName" />
+    <input type="button" style="margin-left:1000px;" class="btn btn-info" value="查询" onclick="Add()" />
+</div>
+<div style="width: 1351px; height: 332px; margin-left: 170px;">
+
+    <table class="table table-hover">
+        <tr>
+            <th>
+                <input type="checkbox" value="" id="ck" />
+            </th>
+            <th>
+                分类名称
+            </th>
+            <th>
+                分类编码
+            </th>
+
+            <th>
+                状态
+            </th>
+            <th>
+                操作
+            </th>
+
+        </tr>
+        <tbody id="tb"></tbody>
+    </table>
+</div>
+<div style="margin-left: 545px; ">
+    <input id="Hidden1" value="1" type="hidden" /><input id="Hidden2" value="" type="hidden" />
+    <input class="" id="bu1" type="button" value="上一页" onclick="fist()" />
+    <input style="margin-left:281px" id="bu1" class="" type="button" value="下一页" onclick="next()" />
+    <select style="margin-left: 339px; " id="yema" onclick="Show()">
+        <option value="3">3</option>
+        <option value="10">10</option>
+        <option value="100">100</option>
+        <option value="2000">2000</option>
+
+    </select>
+    <script>
+        function next() {
+            var i = $("#Hidden1").val();//页码
+            var j = $("#yema").val();//页数
+            var count = $("#Hidden2").val();//总数据
+            var lin = Number(Math.ceil(count / j));
+
+            if (i < lin) {
+                $("#Hidden1").val(Number(Number($("#Hidden1").val()) + 1));
+            }
+
+            Show();
+
+        }
+        function fist() {
+            if ($("#Hidden1").val() == "1") {
+                $("#Hidden1").val(1);
+            }
+            else {
+                $("#Hidden1").val(Number(Number($("#Hidden1").val()) - 1));
+            }
+            Show();
+
+        }
+    </script>
+</div>
+<script>
+    $(function () {
+        Show();
+    })
+    function Show() {
+        $.ajax({
+            url: 'http://localhost:2789/api/claShow',
+            type: 'get',
+            data: {
+                page: $("#Hidden1").val(),
+                rows: $("#yema").val(),
+            },
+            dataType: 'json',
+            success: function (d) {
+                $("#Hidden2").val(d.count);
+                $('#tb').empty();
+                $.each(d.list, function (index, item) {
+                    var line = '<tr>'
+                        + '<td><input class="ck" type="checkbox"   value="' + item.classifyId + '" /> </td>'
+                        + '<td><a href="#"><p>﹀</p><a>' + item.cname + '</td>'
+                        + '<td >' + item.coding + '</td>'
+                        + '<td>' + (item.state == 1 ? "启用" : "禁用") + '</td>'
+                        + '<td><a><p>删除</p></a></td>'
+                        + '</tr>';
+                    $('#tb').append(line);
+
+                })
+            }
+        })
+    }
+</script>

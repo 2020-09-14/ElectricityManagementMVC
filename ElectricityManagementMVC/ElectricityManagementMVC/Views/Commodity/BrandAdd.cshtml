@@ -15,53 +15,57 @@
 
 </head>
 <body>
-    <h1>添加您公司的品牌</h1>
-    <table class="table table-bordered" style="width:700px;">
-        <tr>
-            <td align="right">
-                <h3>品牌Logo</h3>
-            </td>
-            <td>
-                <form id="myform" class="col-form-label" name="myform" method="post" enctype="multipart/form-data"
-                      action="https://localhost:44376/Upload/FormImg">
-                    <input type="file" name="files" id="files" value="选择需要上传的文件" multiple />
-                    <input type="button" id="submitbtn" value="提交" onclick="uplpadfile()">
-                </form>
-                <div>
-                    <input type="hidden" id="hi" />
-                    上传的图片，返回的地址
-                    <div id="imglist">
+    
+    <div style=" margin-left: 496px; margin-top: 100px;">
+        <h1>添加您公司的品牌</h1>
+        <table class="table table-bordered" style="width:700px;">
+            <tr>
+                <td align="right">
+                    <h3>品牌Logo</h3>
+                </td>
+                <td>
+                    <form id="myform" class="col-form-label" name="myform" method="post" enctype="multipart/form-data"
+                          action="https://localhost:44376/Upload/FormImg">
+                        <input type="file" name="files" id="files" value="选择需要上传的文件" multiple />
+                        <input type="button" id="submitbtn" value="提交" onclick="uplpadfile()">
+                    </form>
+                    <div>
+                        <input type="hidden" id="hi" />
+                        上传的图片，返回的地址
+                        <div id="imglist">
+
+                        </div>
 
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <h3>品牌名称</h3>
 
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-                <h3>品牌名称</h3>
-                
-            </td>
-            <td>
-                <input type="text" class="form-control" id="tetName" />
-            </td>
-        </tr>
-        <tr>
-            <td align="right">
-                <h3>企业名称</h3>
-                
-            </td>
-            <td>
-                <input type="text" class="form-control" id="tetCorporation" />
-            </td>
-        </tr>
-        <tr>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="tetName" />
+                </td>
+            </tr>
+            <tr>
+                <td align="right">
+                    <h3>企业名称</h3>
 
-            <td colspan="2" align="center">
-                <input type="button" class="btn btn-info" id="bu" value="添加" onclick="BranAdd()" />
-            </td>
-        </tr>
-    </table>
+                </td>
+                <td>
+                    <input type="text" class="form-control" id="tetCorporation" />
+                </td>
+            </tr>
+            <tr>
+
+                <td colspan="2" align="center">
+                    <input type="button" class="btn btn-info" id="bu" value="添加" onclick="BranAdd()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    
     
 
     

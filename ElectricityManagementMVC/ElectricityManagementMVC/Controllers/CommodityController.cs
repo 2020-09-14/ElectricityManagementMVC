@@ -28,7 +28,15 @@ namespace ElectricityManagementMVC.Controllers
         {
             return View();
         }
-        
+        public IActionResult SpelShow()
+        {
+            return View();
+        }
+        public IActionResult SpelShow2()
+        {
+            return View();
+        }
+
         public IActionResult CommEvaluate()
         {
             return View();

@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewData["Title"] = "SpelShow";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>SpelShow</h1>
+<div style="width: 1351px; height: 332px; margin-left: 170px;">
+       
+        <table class="table table-hover">
+            <tr>
+                <th>
+                    <input type="checkbox" value="" id="ck" />
+                </th>
+                <th>
+                    分类名称
+                </th>
+                <th>
+                    分类编码
+                </th>
+               
+                <th>
+                    状态
+                </th>
+                <th>
+                    操作
+                </th>
+               
+            </tr>
+            <tbody id="tb"></tbody>
+        </table>
+    </div>
+<input type="button" value="ddd" onclick="Lphen()" />
+<input type="hidden" id="hi" value="0" />
+<script>
+    $(function () {
+        Show();
+    })
+    function jia() {
+        $("#hi").val(Number(Number($('#hi').val())+1))
+    }
+    function Lphen() {
+        var line = '<tr><td>打打打</td><td>打打打</td><td>打打打</td><td>打打打</td><td>打打打</td></tr>'
+        $("#tb tr:eq(2)").after(line)
+    }
+    function Show() {
+        $.ajax({
+            url: 'http://localhost:2789/api/Claf',
+            type: 'get',
+            dataType: 'json',
+            success: function (d) {
+                $("#tb").empty();
+                $(d).each(function () {
+                    var line = '<tr>'
+                        + '<td><input class="ck" type="checkbox"   value="' + this.classifyId + '" /> </td>'
+                        + '<td><a href="#" onclick = "Chuan(' + Number($("#hi").val()) + ',' + this.classifyId + ')"><p>﹀</p><a>' + this.cname+'</td>'
+                        + '<td >' + this.coding + '</td>'
+                        + '<td>' + this.state + '</td>'
+                        + '<td><a><p>删除</p></a></td>'
+                        + '</tr>';
+                    $('#tb').append(line);
+                    jia();
+                })
+            }
+        })
+    } 
+    //加载二级联动
+    function Chuan(ids, id) {
+        $("#hi").val('0')
+        Show();
+        $.ajax({
+            url: 'http://localhost:2789/api/GetClaf',
+            type: 'get',
+            data: { ids: id },
+            dataType: 'json',
+            success: function (d) {
+                
+                $(d).each(function () {
+                    var line = '<tr>'
+                        + '<td><input class="ck" type="checkbox"   value="' + this.classifyIdd + '" /></td>'
+                        + '<td> &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp  <a href="#" onclick = "Chuan1(' + Number($("#hi").val()) + ',' + this.classifyId + ')" >﹀</a> ' + this.cname + '</td>'
+                        + '<td >' + this.coding + '</td>'
+                        + '<td>' + this.state + '</td>'
+                        + '<td><a><p>删除</p></a></td>'
+                        + '</tr>';
+                    $("#tb tr:eq(" + ids + ")").after(line)
+                    jia();
+                })
+            }
+        })
+    }
+    function Chuan1(ids, id) {
+        Show();
+        $.ajax({
+            url: 'http://localhost:2789/api/GetClaf',
+            type: 'get',
+            data: { ids: id },
+            dataType: 'json',
+            success: function (d) {
+
+                $(d).each(function () {
+                    var line = '<tr>'
+                        + '<td><input class="ck" type="checkbox"   value="' + this.classifyIdd + '" /></td>'
+                        + '<td> &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp  <a href="#">﹀</a> ' + this.cname + '</td>'
+                        + '<td >' + this.coding + '</td>'
+                        + '<td>' + this.state + '</td>'
+                        + '<td><a><p>删除</p></a></td>'
+                        + '</tr>';
+                    $("#tb tr:eq(" + ids + ")").after(line)
+                })
+            }
+        })
+    }
+
+</script>
