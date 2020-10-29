@@ -8,14 +8,20 @@ namespace ElectricityManagementMVC.Controllers
 {
     public class SalesExchangeController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult TuiShow()
         {
             return View();
         }
+        public IActionResult Pei()
+        {
+            return View();
+        }
+
+        public IActionResult Deng()
+        {
+            return View();
+        }
+
     }
 }

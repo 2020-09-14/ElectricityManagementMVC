@@ -4410,6 +4410,7 @@
       "path": "system.io.compression/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -4480,6 +4481,7 @@
       "path": "system.io.compression.zipfile/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7162,24 +7164,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dell\\.nuget\\packages\\": {},
+    "C:\\Users\\HP\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\电商后台MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Desktop\\ToMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
       "projectName": "ElectricityManagementMVC",
-      "projectPath": "D:\\电商后台MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
-      "packagesPath": "C:\\Users\\dell\\.nuget\\packages\\",
-      "outputPath": "D:\\电商后台MVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
+      "projectPath": "C:\\Users\\HP\\Desktop\\ToMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\Desktop\\ToMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7187,7 +7188,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "D:\\新建文件夹\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
