@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewData["Title"] = "Showlanding";
+}
+
+<h1>显示落地页</h1>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link href="~/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+    <div class="demoTable">
+        <div style="background-color:aliceblue;margin-bottom:15px">
+
+            <div class="layui-inline">
+                <form class="layui-form" action="">
+                    <label class="layui-form-label" style="width:120px">优惠券类型</label>
+
+                    <div class="layui-input-inline">
+
+                        <select name="modules" lay-search="" id="quiz1" lay-verify="required">
+                            <option value="">请选择上线状态</option>
+                            <option value="已上线">已上线</option>
+                            <option value="未上线">未上线</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="layui-form-item" style="width:320px;float:left">
+                <label class="layui-form-label" style="width:100px">落地页</label>
+                <div class="layui-input-block">
+                    <input id="txtName" name="title" class="layui-input" type="text" placeholder="落地页名称" autocomplete="off" lay-verify="title">
+                </div>
+            </div>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="btnCha" class="layui-btn layui-btn-sm layui-btn-normal" data-type="btnCha" type="button"> <i class="layui-icon layui-icon-search"></i> 搜索</button>
+        </div>
+
+        <div style="background-color:aliceblue">
+            <i class="layui-icon layui-icon-spread-left" style="font-size:25px;color:black">数据列表</i>&nbsp;&nbsp;
+            <button class="layui-btn layui-btn-sm layui-btn-normal" data-type="DelShan" type="button"><i class="layui-icon"></i> 删除</button>
+
+       
+
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+        </div>
+    </div>
+    <script type="text/html" id="barDome">
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    </script>
+
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+    <script src="~/layui-v2.5.6/layui/layui.js"></script>
+    <script src="~/新建文件夹/js/jquery.min.js"></script>
+    <script>
+
+
+
+        layui.use('table', function () {
+            var table = layui.table;
+
+            table.render({
+                elem: '#test'
+                , url: 'http://localhost:2789/api/GetShowland'
+                , title: '落地页列表'
+                , method: 'get'
+                , id: 'testReload'
+                , cols: [[
+                    { type: 'checkbox' }
+                    , { field: 'LandingPageName', width: 170, title: '落地页名称' }
+                    , { field: 'PageVime', width: 130, title: '浏览量', sort: true }
+                    , { field: 'Sales', width: 170, title: '销量' }
+                    , { field: 'CreaTime', width: 170, title: '创建时间', sort: true }
+                    , { field: 'UpState', width: 170, title: '上线状态', sort: true }
+                    , { field: 'wealth', width: 300, title: '操作', toolbar: '#barDome' }
+                ]]
+                , page: true
+                , limit: 10
+                , limits: [10, 20]
+                , Id: "testReload"
+            });
+
+            table.on('tool(test)', function (obj) {
+
+                var data = obj.data; //获得当前行数据
+                var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+                var tr = obj.tr;
+
+                if (layEvent == 'del') {
+                    layer.confirm('真的删除行么', function (index) {
+                        obj.del();
+                        layer.close(index);
+                    });
+
+                }
+ 
+
+            });
+
+
+
+            var $ = layui.$, active = {
+                DelShan: function () {
+                    if (confirm('确定删除')) {
+                        var ids = [];
+                        var checkStatus = table.checkStatus('testReload')
+                            ,
+                            data = checkStatus.data;
+
+                        for (var i = 0; i < data.length; i++) {
+                            ids += ',' + data[i].Lid;
+                        }
+                        ids = ids.substr(1);
+                        alert(ids);
+                        $.ajax({
+                            url: "http://localhost:2789/api/GetShowland",
+                            type: "post",
+                            data: { ids: ids },
+                            success: function (d) {
+                                if (d > 0) {
+                                    parent.layer.msg("删除成功！");
+                                    window.location.href = "Showlanding";
+                                }
+                            }
+                        })
+                    }
+
+                }
+                , btnCha: function () {
+                    table.reload('testReload', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        , where: {
+                            UpState: $("#quiz1").val(),
+                            LandingPageName: $("#txtName").val()
+
+                        }
+                    }, 'data');
+                }
+                //, Add: function () {
+                //    layer.open({
+                //        type: 2
+                //        , area: ['500px', '500px']
+                //        , title: '编辑'
+                //        , content: '/ArticlecontrollerController1/Gai'
+                //        , maxmin: true
+                //        , btn: ['确认选择', '关闭']
+                //        , yes: function (index, layero) {
+                //            var row = window["layui-layer-iframe" + index].callbackdata();
+                //            layer.alert("get:" + row);
+                //            // var row = $(layero).find("layui-layer-iframe")[0].contentWindow.callbackdata();
+                //            //可以使用ajax请求对数据进行进一步处理
+                //            layer.close(index);
+                //        }, btn2: function (index, layero) {
+                //            layer.close(index);
+                //        }
+
+                //    })
+                //}
+            };
+            $('.demoTable .layui-btn').on('click', function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+        });
+
+
+
+    </script>
+
+</body>
+</html>
+
