@@ -843,7 +843,6 @@ E:\大一项目\MVC1\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug
 E:\大一项目\MVC1\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\SalesExchange\TuiShow.cshtml.g.cs
 E:\大一项目\MVC1\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Jurisdiction\AddFunction.cshtml.g.cs
 E:\大一项目\MVC1\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Jurisdiction\UptRoles.cshtml.g.cs
-E:\大一项目\MVC1\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.csprojAssemblyReference.cache
 E:\大一项目\MVC1\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Jurisdiction\UptFunction.cshtml.g.cs
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.csprojAssemblyReference.cache
 C:\Users\guisu\Desktop\电商\mvc\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\ConsentExchangeGoods.cshtml.g.cs
