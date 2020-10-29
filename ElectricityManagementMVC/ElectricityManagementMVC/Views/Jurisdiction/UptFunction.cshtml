@@ -1,0 +1,377 @@
+﻿
+@{
+    ViewData["Title"] = "UptFunction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>UptFunction</h1>
+
+
+    <meta charset="utf-8">
+    <title>Layui</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+    <input type="hidden" id="hi" value="@ViewBag.Is" />
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+    <div style="background-color:aliceblue;height:700px">
+        <h2 style="margin-left:20px">新增功能</h2>
+
+        <form style="margin-top:20px" class="layui-form" action="">
+
+
+
+            <div class="layui-form-item">
+                <label style="width:110px;font-size:17px" class="layui-form-label"><span class="layui-badge-dot"></span>功能名称</label>
+                <div class="layui-input-block">
+                    <input id="txtName" name="title" class="layui-input" type="text" placeholder="1" autocomplete="off" lay-verify="title">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label style="width:110px;font-size:17px" class="layui-form-label"><span class="layui-badge-dot"></span>功能编码</label>
+                <div class="layui-input-block">
+                    <input id="txtBian" name="title" class="layui-input" type="text" placeholder="1" autocomplete="off" lay-verify="title">
+                </div>
+            </div>
+
+
+            <div class="layui-collapse" lay-accordion="">
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">衣服</h2>
+                    <div class="layui-colla-content">
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">耐克</h2>
+                                <div class="layui-colla-content layui-show">
+
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">羽绒服</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                暖和,贵！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">裤子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>暖和,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">鞋子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>舒服,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">生活用品</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">毛巾</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                实用,便宜！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">洗衣液</h2>
+                                            <div class="layui-colla-content">
+                                                <p>香好用,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">杯子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>性价比高,便宜！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">运动器材</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">斯伯丁篮球</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                手感好,贵！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">足球</h2>
+                                            <div class="layui-colla-content">
+                                                <p>性价比高,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">乒乓球</h2>
+                                            <div class="layui-colla-content">
+                                                <p>好玩,便宜！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">生活用品</h2>
+                    <div class="layui-colla-content">
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">耐克</h2>
+                                <div class="layui-colla-content layui-show">
+
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">羽绒服</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                暖和,贵！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">裤子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>暖和,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">鞋子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>舒服,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">生活用品</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">毛巾</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                实用,便宜！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">洗衣液</h2>
+                                            <div class="layui-colla-content">
+                                                <p>香好用,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">杯子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>性价比高,便宜！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">运动器材</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">斯伯丁篮球</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                手感好,贵！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">足球</h2>
+                                            <div class="layui-colla-content">
+                                                <p>性价比高,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">乒乓球</h2>
+                                            <div class="layui-colla-content">
+                                                <p>好玩,便宜！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-colla-item">
+                    <h2 class="layui-colla-title">运动器材</h2>
+                    <div class="layui-colla-content">
+                        <div class="layui-collapse" lay-accordion="">
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">耐克</h2>
+                                <div class="layui-colla-content layui-show">
+
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">羽绒服</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                暖和,贵！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">裤子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>暖和,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">鞋子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>舒服,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">生活用品</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">毛巾</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                实用,便宜！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">洗衣液</h2>
+                                            <div class="layui-colla-content">
+                                                <p>香好用,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">杯子</h2>
+                                            <div class="layui-colla-content">
+                                                <p>性价比高,便宜！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-colla-item">
+                                <h2 class="layui-colla-title">运动器材</h2>
+                                <div class="layui-colla-content">
+                                    <div class="layui-collapse" lay-accordion="">
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">斯伯丁篮球</h2>
+                                            <div class="layui-colla-content layui-show">
+                                                手感好,贵！！！！
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">足球</h2>
+                                            <div class="layui-colla-content">
+                                                <p>性价比高,贵！！！！</p>
+                                            </div>
+                                        </div>
+                                        <div class="layui-colla-item">
+                                            <h2 class="layui-colla-title">乒乓球</h2>
+                                            <div class="layui-colla-content">
+                                                <p>好玩,便宜！！！！</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label style="width:110px;font-size:17px" class="layui-form-label"><span class="layui-badge-dot"></span>当前状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" name="open" lay-skin="switch" lay-filter="switchTest" lay-text="ON|OFF">
+                </div>
+            </div>
+            <div style="margin-left:110px;margin-top:30px">
+                <button id="Add" class="layui-btn layui-btn-normal" type="button">提交</button>
+                <button id="Quxiao" class="layui-btn layui-btn-normal" type="button">取消</button>
+            </div>
+        </form>
+    </div>
+    <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <script src="~/layui-v2.5.6/layui/layui.js"></script>
+    <script src="~/新建文件夹/js/jquery.min.js"></script>
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+
+            layui.use(['form', 'layedit', 'laydate'], function () {
+                var form = layui.form;
+
+            });
+
+
+            fantian();
+            function fantian() {
+                var ids = $("#hi").val();
+                $.ajax({
+                    url: "http://localhost:2789/api/FanFunction?ids=" + ids,
+                    type: "get",
+                    dataType: "json",
+                    success: function (d) {
+                        for (var i = 0; i < d.length; i++) {
+                            $("#txtName").val(d[i].FName);
+                            $("#txtBian").val(d[i].FCoding);
+                        }
+                    }
+                })
+            }
+
+            $("#Add").click(function () {
+                var f = {
+                    "FName": $("#txtName").val(),
+                    "FCoding": $("#txtBian").val(),
+                };
+                //obj.TName = $("#txtName").val();
+                //obj.TLinkman = $("#txtLian").val();
+                //obj.TPhone = $("#txtPhone").val();
+                //alert(obj.CategoryId);
+                console.log(f);
+                var json = JSON.stringify(f);
+                //var json1 = JSON.stringify(f);
+                $.ajax({
+                    url: 'http://localhost:2789/api/UptFunction',
+                    data: json,
+                    dataType: 'json',
+                    type: 'post',
+                    contentType:"application/json",
+                    success: function (d) {
+                        if (d > 0) {
+                            alert("ok");
+                            window.location.href = "/Jurisdiction/ShowFunction";
+                        }
+                    }
+                })
+            });
+            $("#Quxiao").click(function () {
+                window.location.href = "/Jurisdiction/ShowFunction";
+            })
+        });
+    </script>
+    <script>
+        layui.use(['element', 'layer'], function () {
+            var element = layui.element;
+            var layer = layui.layer;
+
+            //监听折叠
+            element.on('collapse(test)', function (data) {
+                layer.msg('展开状态：' + data.show);
+            });
+        });
+    </script>

@@ -1,0 +1,238 @@
+﻿
+@{
+    ViewData["Title"] = "ShowFunction";
+}
+
+
+<link href="~/layui-v2.5.6/layui/css/layui.css" rel="stylesheet" />
+<script src="~/layui-v2.5.6/layui/layui.js"></script>
+
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap 实例 - 上下文类</title>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+        <table class="table">
+            <caption>上下文表格布局</caption>
+            <thead style="background-color:white">
+                <tr>
+                    <th>序号</th>
+                    <th>功能名称</th>
+                    <th>功能编码</th>
+                    <th>更新时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+
+            </tbody>
+        </table>
+        <script>
+            Show();
+            function Show() {
+                $.ajax({
+                    url: "http://localhost:2789/api/ShowFunction",
+                    type: "get",
+                    dataType: "json",
+                    success: function (data) {
+                        $("#table").empty();
+                        $(data).each(function (index, ele) {
+                            var tr = '<tr class="success">'
+                                + '<td>' + ele.fId + '</td>'
+                                + '<td>' + ele.fName + '</td>'
+                                + '<td>' + ele.fCoding + '</td>'
+                                + '<td>' + ele.fTime + '</td>'
+                                + '<td>' + ele.fState + '</td>'
+                                + '<td><input id="Buttondel" type="button" value="删除" onclick="Del(' + this.Id + ')" class="btn btn-outline-danger" /><input id="Buttonupt" type="button" value="修改" onclick="Upt(' + this.Id + ')" class="btn btn-outline-primary" /><input id="ButtonAdd" type="button" value="添加" onclick="Add(' + this.Id + ')" class="btn btn-outline-secondary" /></td>'
+                                + '</tr>';
+                            $("#table").append(tr);
+                        })
+                    }
+                })
+            }
+        </script>
+    </body>
+    </html>*@
+@*<div class="demoTable">
+    <div style="background-color:aliceblue;margin-bottom:15px">
+        <div class="layui-inline">
+            <div class="layui-form-item" style="width:320px;float:left">
+                <label class="layui-form-label" style="width:100px">功能编码</label>
+                <div class="layui-input-block">
+                    <input id="txtName" name="title" class="layui-input" type="text" placeholder="请输入功能编码" autocomplete="off" lay-verify="title">
+                </div>
+            </div>
+            <form class="layui-form" action="">
+                <div class="layui-form-item" style="width:320px;float:left">
+                    <label class="layui-form-label" style="width:100px">功能名称</label>
+                    <div class="layui-input-block">
+                        <input id="txtName" name="title" class="layui-input" type="text" placeholder="请输入功能名称" autocomplete="off" lay-verify="title">
+                    </div>
+                </div>
+                <div class="layui-inline" style="float:left">
+                    <label class="layui-form-label" style="width:100px">当前状态</label>
+                    <div class="layui-input-inline">
+                        <select name="modules" lay-search="" lay-verify="required">
+                            <option value="">请选择</option>
+                            <option value="1">启动</option>
+                            <option value="0">禁用</option>
+                        </select>
+                    </div>
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="btnCha" class="layui-btn layui-btn-lg layui-btn-normal" data-type="btnCha" type="button"> <i class="layui-icon layui-icon-search"></i> 查询</button>
+            </form>
+        </div>
+    </div>
+</div>*@
+
+
+<div class="demoTable">
+    <span style="font-size:24px;">功能编码：</span>
+    <div class="layui-inline">
+        <input id="txtbian" type="text" class="layui-input" autocomplete="off" />
+    </div>
+    <span style="font-size:24px;">功能名称：</span>
+    <div class="layui-inline">
+        <input id="txtname" type="text" class="layui-input" autocomplete="off" />
+    </div>
+    <span style="font-size:24px;">当前状态：</span>
+    <div class="layui-inline">
+
+        <select id="selectzhuang" class="form-control">
+            <option value="">请选择</option>
+            <option value="1">启用</option>
+            <option value="0">禁用</option>
+        </select>
+    </div>
+
+    <input id="chaxun" type="button" value="查询" class="layui-btn" data-type="chaxun" />
+    <button class="layui-btn" data-type="getCheckData">批量删除</button>
+    <button type="button" class="layui-btn layui-btn-normal" onclick="location.href = '/Jurisdiction/AddFunction'">新增</button>
+</div>
+
+
+<table class="layui-hide" id="test" lay-filter="test"></table>
+
+
+
+
+<script type="text/html" id="toolbarDemo">
+    <div class="layui-btn-container">
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckData">获取选中行数据</button>
+        <button class="layui-btn layui-btn-sm" lay-event="getCheckLength">获取选中数目</button>
+        <button class="layui-btn layui-btn-sm" lay-event="isAll">验证是否全选</button>
+    </div>
+</script>
+<script type="text/html" id="switchTpl">
+    <!-- 这里的 checked 的状态只是演示 -->
+    <input type="checkbox" name="sex" value="{{d.id}}" lay-skin="switch" lay-text="启用|禁用" lay-filter="sexDemo" {{ d.id == 10003 ? 'checked' : '' }}>
+</script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="xiang">查看详情</a>
+</script>
+@*<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>*@
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+        table.render({
+            elem: '#test'
+            , url: 'http://localhost:2789/api/ShowFunction'
+            , cols: [[
+                { type: 'checkbox', fixed: 'left' }
+                , { field: 'FId', width: 80, title: '序号', sort: true }
+                , { field: 'FName', width: 100, title: '功能名称' }
+                , { field: 'FCoding', width: 100, title: '功能编码' }
+                , { field: 'FTime', width: 180, title: '更新时间', sort: true }
+                , { field: 'FState', title: '状态', width: 100, templet: '#switchTpl', unresize: true }
+                , { fixed: 'right', title: '操作', toolbar: '#barDemo', width: 200 }
+            ]]
+            , id: 'testReload'
+            , page: true
+            , limit: 10
+            , limiits: [10, 20]
+        });
+        table.on('tool(test)', function (obj) {
+            var data = obj.data.FId;
+            //console.log(obj)
+            if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
+
+
+                    console.log(data);
+                    $.ajax({
+                        url: 'http://localhost:2789/api/DelFunction',
+                        data: { ids: data },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (d) {
+                            if (d > 0) {
+                                alert("删除成功");
+                                location.reload();
+                            }
+                            else {
+                                alert("删除失败");
+                                return;
+                            }
+                        }
+                    })
+                });
+            }
+        })
+        var $ = layui.$, active = {
+            getCheckData: function () {
+                var ids = [];
+                var checkStatus = table.checkStatus('testReload')
+                    , data = checkStatus.data;
+                for (var i = 0; i < data.length; i++) {
+                    ids += ',' + data[i].FId;
+                }
+                ids = ids.substr(1);
+                console.log(ids);
+                $.ajax({
+                    url: "http://localhost:2789/api/DelFunction?ids=" + ids,
+                    type: "get",
+                    dataType: "json",
+                    success: function (d) {
+                        parent.layer.msg("删除成功！");
+                        window.location.reload();
+                    }
+                })
+            }, chaxun: function () {
+
+                table.reload('testReload', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {
+                        FCoding: $("#txtbian").val(),
+                        FName: $("#txtname").val(),
+                        FState: $("#selectzhuang").val()
+
+                    }
+                }, 'data');
+            }
+
+
+        }        //监听启用操作
+        //form.on('switch(sexDemo)', function (obj) {
+        //    layer.tips(this.value + ' ' + this.name + '：' + obj.elem.checked, obj.othis);
+        //})
+        $('.demoTable .layui-btn').on('click', function () {
+                var type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            })
+        });
+</script>
+
