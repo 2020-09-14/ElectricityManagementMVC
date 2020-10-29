@@ -1088,4 +1088,3 @@ C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\Elec
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Jurisdiction\UptTissue.cshtml.g.cs
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\ConsentExchangeGoods.cshtml.g.cs
 C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\Razor\Views\Order\TakeDeliveryGoods.cshtml.g.cs
-C:\Users\HP\Desktop\ToMVC\ElectricityManagementMVC\ElectricityManagementMVC\ElectricityManagementMVC\obj\Debug\netcoreapp3.1\ElectricityManagementMVC.csprojAssemblyReference.cache
