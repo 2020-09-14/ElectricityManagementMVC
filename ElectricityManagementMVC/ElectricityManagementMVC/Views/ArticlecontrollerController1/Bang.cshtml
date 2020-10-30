@@ -85,7 +85,7 @@
 
             table.render({
                 elem: '#test'
-                , url: 'http://js/api/ReviewAsync'
+                , url: 'http://localhost:2789/api/ReviewAsync'
                 , title: '文章管理'
                 , method: 'get'
                 , id: 'testReload'
@@ -136,7 +136,7 @@
                         ids = ids.substr(1);
 
                         $.ajax({
-                            url: "http://js/api/DelLunAsync",
+                            url: "http://localhost:2789/api/DelLunAsync",
                             type: "post",
                             data: { MId: ids },
                             success: function (d) {

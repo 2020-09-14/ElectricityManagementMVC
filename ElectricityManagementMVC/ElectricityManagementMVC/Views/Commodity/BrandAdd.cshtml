@@ -26,6 +26,7 @@
                 <td>
                     <form id="myform" class="col-form-label" name="myform" method="post" enctype="multipart/form-data"
                           action="https://localhost:44376/Upload/FormImg">
+                       
                         <input type="file" name="files" id="files" value="选择需要上传的文件" multiple />
                         <input type="button" id="submitbtn" value="提交" onclick="uplpadfile()">
                     </form>
@@ -88,12 +89,12 @@
             data: formdata,
             contentType: false,
             processData: false,
-            url: "http://js/Upload/FormImg",
+            url: "http://localhost:2789/Upload/FormImg",
             success: function (result) {
                 if (result != "上传失败" || result != "文件为空") {
                     $('#hi').val(result)
                     alert(result)
-                    var line = '<img id="imgas" style="width:40px;height:40px"  src="http://js' + result + '" />'
+                    var line = '<img id="imgas" style="width:40px;height:40px"  src="http://localhost:2789' + result + '" />'
                     $('#imglist').append(line)
                     alert('上传成功！');
                 } else {
@@ -118,7 +119,7 @@
         obj.Bname = $("#tetName").val();
         obj.Corporation = $("#tetCorporation").val();
         $.ajax({
-            url: 'http://js/api/Brandadd',
+            url: 'http://localhost:2789/api/Brandadd',
             data: obj,
             type: 'post',
             success: function (d) {

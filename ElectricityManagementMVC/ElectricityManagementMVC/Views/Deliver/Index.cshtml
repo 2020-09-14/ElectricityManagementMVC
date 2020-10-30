@@ -175,7 +175,7 @@
         var deliver      = $("#deliver").val();
 
         $.ajax({
-            url: "http://js/api/Deliver",
+            url: "http://localhost:2789/api/Deliver",
 
             data: {
                 begintime: date1d,
@@ -201,7 +201,7 @@
                         '<td>' + item.wayBillNumber + '</td>' +
                         '<td>' + item.wayBillTime + '</td>' +
                         '<td>' + item.wayBillExpress + '</td>' +
-                        '<td>' + '<img src="http://js' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
+                        '<td>' + '<img src="http://localhost:2789' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
                         '<td>' + item.goodsNum + '</td>' +
                         '<td>' + item.buyerInfoMess + '</td>' +
                         '<td>' + item.buyerAddressName + '<br/>' + item.buyerAddressTel + '<br/>' + item.buyerAddressInfo+'</td>' +
@@ -241,7 +241,7 @@
     }
      function xiala() {
         $.ajax({
-            url: "http://js/api/ExperssagesAsync",
+            url: "http://localhost:2789/api/ExperssagesAsync",
             type: "get",
             dataType: "json",
             success: function (date) {

@@ -72,7 +72,7 @@
 
             table.render({
                 elem: '#test'
-                , url: 'http://js/api/GetShowland'
+                , url: 'http://localhost:2789/api/GetShowland'
                 , title: '落地页列表'
                 , method: 'get'
                 , id: 'testReload'
@@ -124,7 +124,7 @@
                         ids = ids.substr(1);
                         alert(ids);
                         $.ajax({
-                            url: "http://js/api/GetShowland",
+                            url: "http://localhost:2789/api/GetShowland",
                             type: "post",
                             data: { ids: ids },
                             success: function (d) {

@@ -9,7 +9,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>HTML注册登录页面模板</title>
+    <title>商品登录</title>
 
     <link href="~/Deng/css/style.css" rel="stylesheet" />
 </head>
@@ -80,7 +80,7 @@
 
 
         $.ajax({
-            url: 'http://js/api/loginAsync',
+            url: 'http://localhost:2789/api/loginAsync',
             type: 'post',
             dataType: 'json',
             data: cc,
@@ -103,7 +103,7 @@
         
 
         $.ajax({
-            url: 'http://js/api/registerAsync',
+            url: 'http://localhost:2789/api/registerAsync',
             type: 'get',
             dataType: 'json',
             data: { DName: DName, DMi: DMi },

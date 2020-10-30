@@ -120,12 +120,12 @@
                                 data: formdata,
                                 contentType: false,
                                 processData: false,
-                                url: "http://js/Upload/FormImg",
+                                url: "http://localhost:2789/Upload/FormImg",
                                 success: function (result) {
                                     if (result != "上传失败" || result != "文件为空") {
                                         $('#hi').val(result)
                                         alert(result)
-                                        var line = '<img id="imgas" src="http://js' + result + '" />'
+                                        var line = '<img id="imgas" src="http://localhost:2789' + result + '" />'
                                         $('#imglist').append(line)
                                         alert('上传成功！');
                                     } else {
@@ -158,7 +158,7 @@
         });
         function Show() {
             $.ajax({
-                url: 'http://js/api/Claf',
+                url: 'http://localhost:2789/api/Claf',
                 type: 'get',
                 dataType: 'json',
                 success: function (d) {
@@ -174,7 +174,7 @@
         //加载二级联动
         function Show1() {
             $.ajax({
-                url: 'http://js/api/GetClaf',
+                url: 'http://localhost:2789/api/GetClaf',
                 type: 'get',
                 data: { ids: $('#Select1').val() },
                 dataType: 'json',
@@ -191,7 +191,7 @@
         //加载三级联动
         function Show2() {
             $.ajax({
-                url: 'http://js/api/GetClaf',
+                url: 'http://localhost:2789/api/GetClaf',
                 type: 'get',
                 data: { ids: $('#Select2').val() },
                 dataType: 'json',
@@ -208,7 +208,7 @@
         //加载品牌
         function Show3() {
             $.ajax({
-                url: 'http://js/api/Pinpai2',
+                url: 'http://localhost:2789/api/Pinpai2',
                 type: 'get',
                 dataType: 'json',
                 success: function (d) {
@@ -224,7 +224,7 @@
         //加载所有规格
         function Show4() {
             $.ajax({
-                url: 'http://js/api/spec',
+                url: 'http://localhost:2789/api/spec',
                 type: 'get',
                 dataType: 'json',
                 success: function (d) {
@@ -268,7 +268,7 @@
             var jsons = JSON.stringify(obj);
        
             $.ajax({
-                url: 'http://js/api/CommAdd',
+                url: 'http://localhost:2789/api/CommAdd',
                 data: jsons,
                 type: 'post',
                 dataType:'json',

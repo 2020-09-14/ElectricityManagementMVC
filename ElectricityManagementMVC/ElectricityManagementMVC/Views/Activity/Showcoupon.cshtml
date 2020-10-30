@@ -75,7 +75,7 @@
 
             table.render({
                 elem: '#test'
-                , url: 'http://js/api/GetShowcoupon'
+                , url: 'http://localhost:2789/api/GetShowcoupon'
                 , title: '优惠券列表'
                 , method: 'get'
                 , id: 'testReload'
@@ -149,7 +149,7 @@
                         ids = ids.substr(1);
                         alert(ids);
                         $.ajax({
-                            url: "http://js/api/DelAllcoupon",
+                            url: "http://localhost:2789/api/DelAllcoupon",
                             type: "post",
                             data: { ids: ids },
                             success: function (d) {

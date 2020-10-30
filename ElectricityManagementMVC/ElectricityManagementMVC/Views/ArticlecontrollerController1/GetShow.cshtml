@@ -71,7 +71,7 @@
 
                 table.render({
                     elem: '#test'
-                    , url: 'http://js/api/Thisqueries'
+                    , url: 'http://localhost:2789/api/Thisqueries'
                     , title: '文章管理'
                     , method: 'get'
                     , id:'testReload'
@@ -133,7 +133,7 @@
                 layui.use(['form', 'layedit', 'laydate'], function () {
                     var form = layui.form;
                     $.ajax({
-                        url: 'http://js/api/Binding',
+                        url: 'http://localhost:2789/api/Binding',
                         dataType: 'json',
                         type: 'get',
                         success: function (data) {
@@ -160,7 +160,7 @@
                             ids = ids.substr(1);
 
                             $.ajax({
-                                url: "http://js/api/DelmethodsAsync",
+                                url: "http://localhost:2789/api/DelmethodsAsync",
                                 type: "post",
                                 data: { SId: ids },
                                 success: function (d) {

@@ -51,7 +51,7 @@
 
     function Show() {
         $.ajax({
-            url: "http://js/api/GetOrdersDeliver",
+            url: "http://localhost:2789/api/GetOrdersDeliver",
             type: "get",
             dataType: "json",
             success: function (date) {
@@ -76,7 +76,7 @@
     }
     //function xiala() {
     //    $.ajax({
-    //        url: "http://js/api/ExperssagesAsync",
+    //        url: "http://localhost:2789/api/ExperssagesAsync",
     //        type: "get",
     //        dataType: "json",
     //        success: function (date) {
@@ -119,7 +119,7 @@
         WayBillExpress = $('#z2').val();//快递名称
         
         $.ajax({
-            url: 'http://js/api/GetVf',
+            url: 'http://localhost:2789/api/GetVf',
             data: { WayBiilNumber: WayBiilNumber, WayBillOrderId: WayBillOrderId, WayBillExpress},
             type: 'get',
             dataType: 'json',

@@ -39,7 +39,7 @@
             Show();
             function Show() {
                 $.ajax({
-                    url: "http://js/api/ShowFunction",
+                    url: "http://localhost:2789/api/ShowFunction",
                     type: "get",
                     dataType: "json",
                     success: function (data) {
@@ -148,7 +148,7 @@
         var table = layui.table;
         table.render({
             elem: '#test'
-            , url: 'http://js/api/ShowFunction'
+            , url: 'http://localhost:2789/api/ShowFunction'
             , cols: [[
                 { type: 'checkbox', fixed: 'left' }
                 , { field: 'FId', width: 80, title: '序号', sort: true }
@@ -172,7 +172,7 @@
 
                     console.log(data);
                     $.ajax({
-                        url: 'http://js/api/DelFunction',
+                        url: 'http://localhost:2789/api/DelFunction',
                         data: { ids: data },
                         type: 'get',
                         dataType: 'json',
@@ -201,7 +201,7 @@
                 ids = ids.substr(1);
                 console.log(ids);
                 $.ajax({
-                    url: "http://js/api/DelFunction?ids=" + ids,
+                    url: "http://localhost:2789/api/DelFunction?ids=" + ids,
                     type: "get",
                     dataType: "json",
                     success: function (d) {

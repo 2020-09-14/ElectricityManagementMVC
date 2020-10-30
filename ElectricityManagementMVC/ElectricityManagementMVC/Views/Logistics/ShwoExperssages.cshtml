@@ -78,7 +78,7 @@
         var EName = $("#EName").val();
         var Eofficial = $("#Eofficial").val();
         $.ajax({
-            url: 'http://js/api/ExperssagesAsync',
+            url: 'http://localhost:2789/api/ExperssagesAsync',
             data: { EName: EName, Eofficial: Eofficial },
             dataType: 'json',
             type: 'get',
@@ -109,7 +109,7 @@
         };
         var josn1 = JSON.stringify(b);
         $.ajax({
-            url: 'http://js/api/AddBranchAsync',
+            url: 'http://localhost:2789/api/AddBranchAsync',
             data: josn1,
             type: 'post',
             dataType: "json",

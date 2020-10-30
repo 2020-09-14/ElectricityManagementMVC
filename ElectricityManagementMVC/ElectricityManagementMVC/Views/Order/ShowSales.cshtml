@@ -199,7 +199,7 @@
         var salesexs = $("#exchange").val();
       
         $.ajax({
-            url: "http://js/api/GetSales",
+            url: "http://localhost:2789/api/GetSales",
             data: {
                 salesnum: salesnums,
                 expressnum: expressnums,
@@ -266,7 +266,7 @@
         var vals = arr.join(",");
         console.log(vals);
         $.ajax({
-            url: "http://js/api/SalesDelAllAsync?ids=" + vals,
+            url: "http://localhost:2789/api/SalesDelAllAsync?ids=" + vals,
             type: "get",
             dataType: "json",
             success: function (d) {
@@ -300,7 +300,7 @@
     })
     function xiala() {
         $.ajax({
-            url: "http://js/api/salaschange",
+            url: "http://localhost:2789/api/salaschange",
             type: "get",
             dataType: "json",
             success: function (date) {

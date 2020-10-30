@@ -106,7 +106,7 @@
         var table = layui.table;
         table.render({
             elem: '#test'
-            , url: 'http://js/api/ShowRoles'
+            , url: 'http://localhost:2789/api/ShowRoles'
             , cols: [[
                 { type: 'checkbox', fixed: 'left' }
                 , { field: 'RId', width: 80, title: '序号', sort: true }
@@ -133,7 +133,7 @@
 
                     console.log(data);
                     $.ajax({
-                        url: 'http://js/api/DelRoles',
+                        url: 'http://localhost:2789/api/DelRoles',
                         data: { ids: data },
                         type: 'get',
                         dataType: 'json',
@@ -165,7 +165,7 @@
                 ids = ids.substr(1);
                 console.log(ids);
                 $.ajax({
-                    url: "http://js/api/DelRoles?ids=" + ids,
+                    url: "http://localhost:2789/api/DelRoles?ids=" + ids,
                     type: "get",
                     dataType: "json",
                     success: function (d) {
@@ -214,7 +214,7 @@
         layui.use(['form', 'layedit', 'laydate'], function () {
             var form = layui.form;
             $.ajax({
-                url: 'http://js/api/BindDepartment',
+                url: 'http://localhost:2789/api/BindDepartment',
                 dataType: 'json',
                 type: 'get',
                 success: function (d) {

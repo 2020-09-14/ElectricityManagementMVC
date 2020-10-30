@@ -81,7 +81,7 @@
             layui.use(['form', 'layedit', 'laydate'], function () {
                 var form = layui.form;
                 $.ajax({
-                    url: 'http://js/api/Binding',
+                    url: 'http://localhost:2789/api/Binding',
                     dataType: 'json',
                     type: 'get',
                     success: function (d) {
@@ -119,7 +119,7 @@
             obj.Details = $("#txtNei").val();
 
             $.ajax({
-                url: 'http://js/api/AdditionAsync',
+                url: 'http://localhost:2789/api/AdditionAsync',
                 type: 'post',
                 data: obj,
                 dataType: 'json',

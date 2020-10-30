@@ -75,7 +75,7 @@
 
             table.render({
                 elem: '#test'
-                , url: 'http://js/api/GetShowActivity'
+                , url: 'http://localhost:2789/api/GetShowActivity'
                 , title: '限时购列表'
                 , method: 'get'
                 , id: 'testReload'
@@ -132,7 +132,7 @@
                         ids = ids.substr(1);
                         alert(ids);
                         $.ajax({
-                            url: "http://js/api/DelAllActivities",
+                            url: "http://localhost:2789/api/DelAllActivities",
                             type: "post",
                             data: { ids: ids },
                             success: function (d) {

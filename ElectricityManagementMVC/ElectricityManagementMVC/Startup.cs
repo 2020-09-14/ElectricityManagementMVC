@@ -34,7 +34,7 @@ namespace ElectricityManagementMVC
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/SalesExchange/Deng");
             }
             app.UseStaticFiles();
 
@@ -46,7 +46,7 @@ namespace ElectricityManagementMVC
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=SalesExchange}/{action=Deng}/{id?}");
             });
         }
     }

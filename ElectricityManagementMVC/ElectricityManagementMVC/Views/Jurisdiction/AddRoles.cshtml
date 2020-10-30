@@ -110,7 +110,7 @@
         console.log(obj);
         var josn1 = JSON.stringify(obj);
         $.ajax({
-            url: 'http://js/api/AddRoles',
+            url: 'http://localhost:2789/api/AddRoles',
             type: 'post',
             data: josn1,
             dataType: 'json',
@@ -138,7 +138,7 @@
         layui.use(['form', 'layedit', 'laydate'], function () {
             var form = layui.form;
             $.ajax({
-                url: 'http://js/api/BindDepartment',
+                url: 'http://localhost:2789/api/BindDepartment',
                 dataType: 'json',
                 type: 'get',
                 success: function (d) {

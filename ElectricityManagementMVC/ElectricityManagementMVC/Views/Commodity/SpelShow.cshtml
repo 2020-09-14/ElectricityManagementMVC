@@ -45,7 +45,7 @@
     }
     function Show() {
         $.ajax({
-            url: 'http://js/api/Claf',
+            url: 'http://localhost:2789/api/Claf',
             type: 'get',
             dataType: 'json',
             success: function (d) {
@@ -69,7 +69,7 @@
         $("#hi").val('0')
         Show();
         $.ajax({
-            url: 'http://js/api/GetClaf',
+            url: 'http://localhost:2789/api/GetClaf',
             type: 'get',
             data: { ids: id },
             dataType: 'json',
@@ -92,7 +92,7 @@
     function Chuan1(ids, id) {
         Show();
         $.ajax({
-            url: 'http://js/api/GetClaf',
+            url: 'http://localhost:2789/api/GetClaf',
             type: 'get',
             data: { ids: id },
             dataType: 'json',

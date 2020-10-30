@@ -205,7 +205,7 @@
         var telss = $("#tels").val();
      
         $.ajax({
-            url: "http://js/api/Order",
+            url: "http://localhost:2789/api/Order",
 
             data: {
                 ordernum: dingnums,
@@ -230,7 +230,7 @@
                     var str = '<tr>' +
                         '<td><input id="Checkbox1" type="checkbox"  value=' + item.orderId + ' name="sub" /></td>' +
                         '<td>' + item.orderNumber + '</td>' +
-                        '<td>' + '<img src="http://js' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
+                        '<td>' + '<img src="http://localhost:2789' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
                         '<td>' + item.goodsNum + '</td>' +
                         '<td>' + (item.goodsPrice * item.goodsNum) + '</td>' +
                         '<td>' + item.buyerInfoName + '<br/>' + item.buyerInfoTel + '</td>' +
@@ -279,7 +279,7 @@
         var vals = arr.join(",");
         console.log(vals);
         $.ajax({
-            url: "http://js/api/DelAll?ids=" + vals,
+            url: "http://localhost:2789/api/DelAll?ids=" + vals,
             type: "get",
             dataType: "json",
             success: function (d) {

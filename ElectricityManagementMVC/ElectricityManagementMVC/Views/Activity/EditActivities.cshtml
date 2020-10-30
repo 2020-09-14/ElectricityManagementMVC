@@ -95,7 +95,7 @@
 
 
         $.ajax({
-            url: 'http://js/api/fantian?ids=' + $("#XId").val(),
+            url: 'http://localhost:2789/api/fantian?ids=' + $("#XId").val(),
             type: 'get',
             dataType: 'json',
   
@@ -142,7 +142,7 @@
        
 
         $.ajax({
-            url: 'http://js/api/EditActivities',
+            url: 'http://localhost:2789/api/EditActivities',
             type: 'post',
             dataType: 'json',
             data: cc,
