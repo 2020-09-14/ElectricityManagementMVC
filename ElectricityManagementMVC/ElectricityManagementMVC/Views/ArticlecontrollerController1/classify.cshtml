@@ -70,7 +70,7 @@
 
             table.render({
                 elem: '#test'
-                , url: 'http://localhost:2789/api/FenLeiAsync'
+                , url: 'http://js/api/FenLeiAsync'
                 , title: '文章管理'
                 , method: 'get'
                 , id: 'testReload'
@@ -140,7 +140,7 @@
                         ids = ids.substr(1);
                         alert(ids);
                         $.ajax({
-                            url: "http://localhost:2789/api/DelLeiAsync",
+                            url: "http://js/api/DelLeiAsync",
                             type: "post",
                             data: { DId: ids },
                             success: function (d) {

@@ -124,7 +124,7 @@
 
     function Show() {
         $.ajax({
-            url: "http://localhost:2789/api/GetordeCancel",
+            url: "http://js/api/GetordeCancel",
             data: {
                 page: $("#Hidden1").val(),
                 pageSize: $("#Select1").val()
@@ -151,7 +151,7 @@
     function bianji(ids) {
         sessionStorage.setItem("qwe", ids);
         $.ajax({
-            url: "http://localhost:2789/api/GetOrdeEdit?ids="+ids,
+            url: "http://js/api/GetOrdeEdit?ids="+ids,
          
             type: "get",
             dataType: "json",
@@ -176,7 +176,7 @@
         var cc = JSON.stringify(obj);
         console.log(obj);
         $.ajax({
-            url: "http://localhost:2789/api/UptCancel",
+            url: "http://js/api/UptCancel",
             type: "post",
             data: cc,
             dataType: "json",
@@ -198,7 +198,7 @@
         var cc = JSON.stringify(obj);
         console.log(obj);
         $.ajax({
-            url: "http://localhost:2789/api/AddCancel",
+            url: "http://js/api/AddCancel",
             type: "post",
             data: cc,
             dataType: "json",
@@ -237,7 +237,7 @@
     }
     function del(aa) {
         $.ajax({
-            url: "http://localhost:2789/api/DelordeAll?ids=" + aa,
+            url: "http://js/api/DelordeAll?ids=" + aa,
             type: "get",
             dataType: "json",
             success: function (d) {
@@ -260,7 +260,7 @@
         var vals = arr.join(",");
         console.log(vals);
         $.ajax({
-            url: "http://localhost:2789/api/DelordeAll?ids=" + vals,
+            url: "http://js/api/DelordeAll?ids=" + vals,
             type: "get",
             dataType: "json",
             success: function (d) {

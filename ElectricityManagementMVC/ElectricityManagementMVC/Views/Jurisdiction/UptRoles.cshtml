@@ -94,7 +94,7 @@
     function fantian() {
         var ids = $("#hi").val();
         $.ajax({
-            url: "http://localhost:2789/api/FanRoles?ids=" + ids,
+            url: "http://js/api/FanRoles?ids=" + ids,
             type: "get",
             dataType: "json",
             success: function (d) {
@@ -123,7 +123,7 @@
         console.log(obj);
         var josn1 = JSON.stringify(obj);
         $.ajax({
-            url: 'http://localhost:2789/api/UptRoles',
+            url: 'http://js/api/UptRoles',
             type: 'post',
             data: josn1,
             dataType: 'json',
@@ -148,7 +148,7 @@
         layui.use(['form', 'layedit', 'laydate'], function () {
             var form = layui.form;
             $.ajax({
-                url: 'http://localhost:2789/api/BindDepartment',
+                url: 'http://js/api/BindDepartment',
                 dataType: 'json',
                 type: 'get',
                 success: function (d) {

@@ -94,7 +94,7 @@
         var Pordernumber = $("#Pordernumber").val();
         var Panomaly = $("#Panomaly").val();
         $.ajax({
-            url: 'http://localhost:2789/api/PackagesAsync',
+            url: 'http://js/api/PackagesAsync',
             data: { Pstate: Pstate, EName: EName, Podd: Podd, Pordernumber: Pordernumber, Panomaly: Panomaly },
             dataType: 'json',
             type: 'get',
@@ -121,7 +121,7 @@
     function Upt(id)
     {
         $.ajax({
-            url: 'http://localhost:2789/api/DetailsPackageAsync?id=' + id,
+            url: 'http://js/api/DetailsPackageAsync?id=' + id,
             dataType: 'json',
             type: 'post',
             success: function (data)
@@ -159,7 +159,7 @@
         console.log(p);
         var json = JSON.stringify(p);
         $.ajax({
-            url: 'http://localhost:2789/api/AddPackagesAsync',
+            url: 'http://js/api/AddPackagesAsync',
             data: json,
             dataType: 'json',
             type: 'post',

@@ -48,13 +48,18 @@
 
         <div class="row" style="margin-right: 260px;margin-left: 34px;">
             <div>
-                <span>换货单号</span>&nbsp;<input type="text" placeholder="换货单号" id="dingnum" />&nbsp;&nbsp;
-                <span>快递单号</span>&nbsp;<input type="text" placeholder="快递单号" id="dingnum" />&nbsp;&nbsp
-                <span>退货人手机</span>&nbsp;<input type="text" placeholder="退货人手机" id="liuinfo" />&nbsp;&nbsp;
-                <span>退货人昵称</span>&nbsp;<input type="text" placeholder="退货人昵称" id="goodsname" />&nbsp;&nbsp;
+                <span>换货单号</span>&nbsp;<input type="text" placeholder="换货单号" id="exdingnum" />&nbsp;&nbsp;
+                <span>快递单号</span>&nbsp;<input type="text" placeholder="快递单号" id="willnum" />&nbsp;&nbsp;
+                <span>退货人手机</span>&nbsp;<input type="text" placeholder="退货人手机" id="addtels" />&nbsp;&nbsp;
+                <span>退货人昵称</span>&nbsp;<input type="text" placeholder="退货人昵称" id="addsname" />&nbsp;&nbsp;
             </div>
+         
         </div>
+    <br />
+   
         <span>申请时间</span>&nbsp;
+
+ 
         <div class='col-sm-2'>
             <div class="form-group">
                 <!--指定 date标记-->
@@ -81,8 +86,17 @@
         </div>
 
         <span>快递公司</span>&nbsp;
-        <input type="text" value="" placeholder="商品编码" id="goodsnum">
-        <span>换货原因</span>&nbsp;&nbsp;<input type="text" value="" placeholder="买家昵称" id="types">
+        <select id="Select5">
+            <option value="">请选择快递公司</option>
+            <option value="顺丰">顺丰</option>
+            <option value="中通">中通</option>
+            <option value="园通">园通</option>
+            <option value="申通">申通</option>
+            <option value="汇通">汇通</option>
+            <option value="韵达">韵达</option>
+            <option value="邮政">邮政</option>
+        </select>
+        <span>换货原因</span>&nbsp;&nbsp;<select id="exchange"><option value="">请选择退货原因</option></select>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class="btn btn-info" onclick="Show()" type="button">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -106,12 +120,9 @@
         </button>&nbsp;&nbsp;&nbsp;
         <button type="button" class="btn btn-info">
 
-            <span>打印发货单</span>
-        </button>&nbsp;&nbsp;&nbsp;
-        <button type="button" class="btn btn-info" onclick="deliver()">
-
             <span>批量收货</span>
         </button>&nbsp;&nbsp;&nbsp;
+   
         <button type="button" class="btn btn-info">
 
             <span>批量退款</span>
@@ -143,7 +154,7 @@
             <input class="btn btn-info dropdown-toggle" id="bu1" type="button" value="上一页" onclick="fist()" />
 
             <input style="text-align:center" id="bu1" class="btn btn-info dropdown-toggle" type="button" value="下一页" onclick="next()" />
-            <select id="Select1" onclick="Show()">
+            <select id="fenye1" onclick="Show()">
                 <option value="3">3</option>
                 <option value="6">6</option>
                 <option value="9">9</option>
@@ -156,6 +167,7 @@
 <script>
     $(function () {
         Show();
+        xiala();
         var picker1 = $('#datetimepicker1').datetimepicker({
             format: 'YYYY-MM-DD',
             locale: moment.locale('zh-cn'),
@@ -176,26 +188,30 @@
     })
 
     function Show(aa) {
-        var dingnums = $("#dingnum").val();
-        var shidateb = $("#date1").val();
-        var shidateo = $("#date2").val();
-        var Select2s = $("#Select2").val();
-        var liuinfos = $("#liuinfo").val();
-        var goodsnames = $("#goodsname").val();
-        var goodsnums = $("#goodsnum").val();
+        var salesnums = $("#exdingnum").val();
+        var expressnums = $("#willnum").val();
+        var telnums = $("#addtels").val();
+        var salesnames = $("#addsname").val();
+        var begintimes = $("#date1").val();
+        var overtimes = $("#date2").val();
+        var expresss = $("#Select5").val();
+      
+        var salesexs = $("#exchange").val();
+      
         $.ajax({
-            url: "http://localhost:2789/api/GetSales",
+            url: "http://js/api/GetSales",
             data: {
-                SalesNumber: dingnums,
-                SalesTime: Select2s,
-                SalesTime: Select2s,
-                GoodsNum: liuinfos,
-                GoodsPrice: shidateb,
-                ReturnSalesId: shidateo,
-                SalesState: goodsnames,
-                SalesExchangeInfo: goodsnums,
+                salesnum: salesnums,
+                expressnum: expressnums,
+                telnum: telnums,
+                salesname: salesnames,
+                begintime: begintimes,
+                overtime: overtimes,
+                express: expresss,
+                salesex: salesexs,
                 page: $("#Hidden1").val(),
-                pageSize: $("#Select1").val()
+                pageSize: $("#fenye1").val(),
+                states:aa
             },
             type: "get",
             dataType: "json",
@@ -204,25 +220,24 @@
                 $("#tb").empty();
                 $.each(date.lists, function (index, item) {
                     var str = '<tr>' +
-                        '<td><input id="Checkbox1" type="checkbox"  value=' + item.SalesId + ' name="sub" /></td>' +
-                        '<td>' + item.SalesNumber + '</td>' +
-                        '<td>' + item.OrderNumber + '</td>' +
-                        '<td>' + item.SalesTime + '</td>' +
-                        '<td>' + item.GoodsNum+ '</td>' +
-                        '<td>' + item.GoodsPrice  +'</td>' +
-                        '<td>' + item.SalesState+ '</td>' +
-                        '<td>' + item.SalesState + '</td>' +
+                        '<td><input id="Checkbox1" type="checkbox"  value=' + item.salesId + ' name="sub" /></td>' +
+                        '<td>' + item.salesNumber + '</td>' +
+                        '<td>' + item.wayBillNumber + '</td>' +
+                        '<td>' + item.salesTime + '</td>' +
+                        '<td>' + item.goodsNum + '</td>' +
+                        '<td>' + (item.goodsPrice * item.goodsNum) + '</td>' +
+                        '<td>' + item.salesExchangeCause+ '</td>' +
+                        '<td>' + (item.salesState === 1 ? "已完成" : item.salesState === 2 ? "待审核" : item.salesState === 3 ? "待收货" : item.salesState === 4 ? "待退款" : item.salesState === 5 ? "待到账" : "拒绝退货") + '</td>' +
                         '<td><a href="/Order/DetailsSales?id=' + item.SalesId + '">查看详情</a></td>' +
                         '</tr>'
                     $("#tb").append(str);
                 })
-
             }
         })
     }
     function next() {
         var i = $("#Hidden1").val();//页码
-        var j = $("#Select1").val();//页数
+        var j = $("#fenye1").val();//页数
         var count = $("#Hidden2").val();//总数据
         var lin = Number(Math.ceil(count / j));
 
@@ -251,7 +266,7 @@
         var vals = arr.join(",");
         console.log(vals);
         $.ajax({
-            url: "http://localhost:2789/api/DelAll?ids=" + vals,
+            url: "http://js/api/SalesDelAllAsync?ids=" + vals,
             type: "get",
             dataType: "json",
             success: function (d) {
@@ -283,4 +298,19 @@
         var $sub = $("input[name='sub']");
         $("#alll").prop("checked", $sub.length == $sub.filter(":checked").length ? true : false);
     })
+    function xiala() {
+        $.ajax({
+            url: "http://js/api/salaschange",
+            type: "get",
+            dataType: "json",
+            success: function (date) {
+                $("#Select1").empty();
+                $.each(date, function (index, item) {
+                    var str = '<option value="' + item.salesExchangeId + '">' + item.salesExchangeCause+'</option>'
+                    $("#exchange").append(str);
+                })
+
+            }
+        })
+        }
 </script>

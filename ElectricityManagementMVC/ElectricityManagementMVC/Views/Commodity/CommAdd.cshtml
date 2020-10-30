@@ -121,7 +121,7 @@
     //加载一级联动
     function Show() {
         $.ajax({
-            url: 'http://localhost:2789/api/Claf',
+            url: 'http://js/api/Claf',
             type: 'get',
             dataType: 'json',
             success: function (d) {
@@ -137,7 +137,7 @@
      //加载二级联动
     function Show1() {
         $.ajax({
-            url: 'http://localhost:2789/api/GetClaf',
+            url: 'http://js/api/GetClaf',
             type: 'get',
             data: { ids: $('#Select1').val() },
             dataType: 'json',
@@ -154,7 +154,7 @@
      //加载三级联动
     function Show2() {
         $.ajax({
-            url: 'http://localhost:2789/api/GetClaf',
+            url: 'http://js/api/GetClaf',
             type: 'get',
             data: { ids: $('#Select2').val() },
             dataType: 'json',
@@ -171,7 +171,7 @@
      //加载品牌
     function Show3() {
         $.ajax({
-            url: 'http://localhost:2789/api/Pinpai',
+            url: 'http://js/api/Pinpai',
             type: 'get',
          
             dataType: 'json',

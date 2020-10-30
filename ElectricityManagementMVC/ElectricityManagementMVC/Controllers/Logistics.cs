@@ -47,5 +47,6 @@ namespace ElectricityManagementMVC.Controllers
             ViewBag.id = id;
             return View();
         }
+      
     }
 }

@@ -66,7 +66,7 @@
             })
             function Xian() {
                 $.ajax({
-                    url: 'http://localhost:2789/api/Pinpai',
+                    url: 'http://js/api/Pinpai',
                     data: { page: $("#Hidden1").val(), rows: $("#Select1").val() },
                     dataType: 'json',
                     success: function (d) {
@@ -75,7 +75,7 @@
                         $.each(d.list, function (index, item) {
                             var line = '<tr>'
                                 + '<td>' + item.brandid + '</td>'
-                                + '<td><img style="width:40px;height:40px" src="http://localhost:2789' + item.img + '" /></td>'
+                                + '<td><img style="width:40px;height:40px" src="http://js' + item.img + '" /></td>'
                                 + '<td>' + item.bname + '</td>'
                                 + '<td>' + item.corporation + '</td>'
                                 + '<td>' + item.creaTime + '</td>'

@@ -73,7 +73,7 @@
     function Fantian() {
         var id = $("#Aid").val();
         $.ajax({
-            url: 'http://localhost:2789/api/FandAddressAsync?id=' + id,
+            url: 'http://js/api/FandAddressAsync?id=' + id,
             dataType: 'json',
             type: 'post',
             success: function (d) {
@@ -115,7 +115,7 @@
         }
         var josn = JSON.stringify(a);
         $.ajax({
-            url: 'http://localhost:2789/api/AddAddressAsync',
+            url: 'http://js/api/AddAddressAsync',
             data: josn,
             type: 'post',
             dataType: "json",

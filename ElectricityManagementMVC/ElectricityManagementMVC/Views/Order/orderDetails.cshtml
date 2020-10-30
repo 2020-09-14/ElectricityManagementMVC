@@ -59,7 +59,7 @@
     Show()
     function Show() {
         $.ajax({
-            url: "http://localhost:2789/api/GetOderDetil?ids=" + $("#ss").val(),
+            url: "http://js/api/GetOderDetil?ids=" + $("#ss").val(),
             type: "get",
             dataType: "json",
             success: function (date) {
@@ -113,7 +113,7 @@
                         ' </tr>' +
                         ' <tbody >' +
                         ' <tr>' +
-                        '<td>' + '<img src="http://localhost:2789' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
+                        '<td>' + '<img src="http://js' + item.goodsImg + '" alt="" width="40" height="40" />' + item.goodsName + '&nbsp;' + item.goodsIntroduce + '</td>' +
                         ' <td>' + item.goodsPrice + '</td>' +
                         '   <td>' + item.goodsNum + '</td>' +
                         '  <td>' + (item.goodsNum * item.goodsPrice) + '</td>' +
@@ -151,7 +151,7 @@
         var cc = JSON.stringify(obj);
         console.log(obj);
         $.ajax({
-            url: "http://localhost:2789/api/UptAll",
+            url: "http://js/api/UptAll",
             type:"post",
             data: cc,
             dataType: "json",

@@ -321,7 +321,7 @@
             function fantian() {
                 var ids = $("#hi").val();
                 $.ajax({
-                    url: "http://localhost:2789/api/FanFunction?ids=" + ids,
+                    url: "http://js/api/FanFunction?ids=" + ids,
                     type: "get",
                     dataType: "json",
                     success: function (d) {
@@ -346,7 +346,7 @@
                 var json = JSON.stringify(f);
                 //var json1 = JSON.stringify(f);
                 $.ajax({
-                    url: 'http://localhost:2789/api/UptFunction',
+                    url: 'http://js/api/UptFunction',
                     data: json,
                     dataType: 'json',
                     type: 'post',

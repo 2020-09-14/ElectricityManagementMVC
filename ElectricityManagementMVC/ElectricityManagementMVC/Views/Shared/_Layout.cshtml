@@ -46,7 +46,7 @@
             </div>
             <div class="right-menu list-inline no-margin-bottom">
                 <div class="list-inline-item"><a href="#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></div>
-                <div class="list-inline-item logout"> <a id="logout" href="login.html" class="nav-link"> <span class="d-none d-sm-inline">登陆人 </span><i class="icon-logout"></i></a></div>
+                <div class="list-inline-item logout"> <a id="logout" href="/SalesExchange/Deng" class="nav-link"> <span class="d-none d-sm-inline">登陆人<span id="sss"> </span><i class="icon-logout"></i></span></a></div>
             </div>
         </div>
     </nav>
@@ -81,30 +81,33 @@
                     <a href="javascript:;"><i class="my-icon nav-icon icon_3"></i><span>订单管理</span><i class="my-icon nav-more"></i></a>
                     <ul>
                         <li><a href="/Order/Index"><span>订单列表</span></a></li>
-                        <li><a href="javascript:;"><span>订单设置</span></a></li>
+                
                         <li><a href="/Deliver/Index"><span>运单列表</span></a></li>
-                        <li><a href="javascript:;"><span>取消原因</span></a></li>
+                        <li><a href="/Deliver/Cancel"><span>取消原因</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="javascript:;"><i class="icon-grid"></i><span>退换货管理</span><i class="my-icon nav-more"></i></a>
+                    <a href="javascript:;"><i class="icon-grid"></i><span>退货管理</span><i class="my-icon nav-more"></i></a>
                     <ul>
-                        <li><a href="javascript:;"><span>退货列表</span></a></li>
-                        <li><a href="javascript:;"><span>换货列表</span></a></li>
+
+                        <li><a href="/Order/ShowSales"><span>退货列表</span></a></li>
+                       
                         <li><a href="/SalesExchange/TuiShow"><span>退换货原因</span></a></li>
+
+
 
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:;"><i class="icon-logout"></i><span>物流管理</span><i class="my-icon nav-more"></i></a>
                     <ul>
-<<<<<<< HEAD
+
                         <li><a href="/Logistics/ShwoExperssages"><span>快递公司</span></a></li>
                         <li><a href="/Logistics/ShwoPackages"><span>包裹中心</span></a></li>
-=======
-                        <li><a href="/Logistics/ShwoPackages"><span>包裹中心</span></a></li>
+
+                       
                         <li><a href="/Logistics/ShwoExperssages"><span>快递公司</span></a></li>
->>>>>>> e7ae9d48521075c141386d168815b481003fca68
+
                         <li><a href="/Logistics/Index"><span>地址列表</span></a></li>
                         <li><a href="/Logistics/AddAddress"><span>新增地址</span></a></li>
                     </ul>
@@ -112,18 +115,18 @@
                 <li class="nav-item">
                     <a href="javascript:;"><i class="icon-writing-whiteboard"></i><span>促销管理</span><i class="my-icon nav-more"></i></a>
                     <ul>
-                        <li><a href="Activity/ShowActivities"><span>限时购列表</span></a></li>
+                        <li><a href="/Activity/ShowActivities"><span>限时购列表</span></a></li>
                         
-                        <li><a href="Activity/AddActivities"><span>新增显示活动</span></a></li>
-                        <li><a href="Activity/Showcoupon"><span>优惠卷列表</span></a></li>
-                        <li><a href="Activity/Addcoupon"><span>新增优惠卷</span></a></li>
+                        <li><a href="/Activity/AddActivities"><span>新增显示活动</span></a></li>
+                        <li><a href="/Activity/Showcoupon"><span>优惠卷列表</span></a></li>
+                        <li><a href="/Activity/Addcoupon"><span>新增优惠卷</span></a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
                     <a href="javascript:;"><i class="icon-padnote"></i><span>广告管理</span><i class="my-icon nav-more"></i></a>
                     <ul>
-                        <li><a href="Activity/Showlanding"><span>广告落地页</span></a></li>
-                        <li><a href="Activity/Addlanding"><span>新增落地页</span></a></li>
+                        <li><a href="/Activity/Showlanding"><span>广告落地页</span></a></li>
+                        <li><a href="/Activity/Addlanding"><span>新增落地页</span></a></li>
 
                     </ul>
                 </li>
@@ -171,3 +174,6 @@
     </div>
 </body>
 </html>
+<script>
+    $("#sss").html(sessionStorage.getItem("ddd"));
+</script>

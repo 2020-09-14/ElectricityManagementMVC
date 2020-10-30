@@ -162,7 +162,7 @@
           
            
             $.ajax({
-                url: 'http://localhost:2789/api/SpcifiShow',
+                url: 'http://js/api/SpcifiShow',
                 data: {
                     page: $("#Hidden1").val(),
                     rows: $("#yema").val(),
@@ -194,7 +194,7 @@
             $("#BaaXq").hide();
             $("#BuuAdd").hide();
             $.ajax({
-                url: 'http://localhost:2789/api/SpFt?ids=' + ids,
+                url: 'http://js/api/SpFt?ids=' + ids,
                 type: 'get',
                 dataType: 'json',
                 success: function (d) {
@@ -208,7 +208,7 @@
        
         function del(ids) {
             $.ajax({
-                url: 'http://localhost:2789/api/SpDel',
+                url: 'http://js/api/SpDel',
                 data: { ids: ids },
                 type: 'get',
                 dataType: 'json',

@@ -35,7 +35,7 @@
     })
     function Show() {
         $.ajax({
-            url: 'http://localhost:2789/api/GetAddressesAsync',
+            url: 'http://js/api/GetAddressesAsync',
             dataType: 'json',
             type: 'get',
             success: function (data) {
@@ -60,7 +60,7 @@
     function Del(id) {
         if (confirm("确定要删除吗")) {
             $.ajax({
-                url: 'http://localhost:2789/api/DelAddressAsync?id=' + id,
+                url: 'http://js/api/DelAddressAsync?id=' + id,
                 dataType: 'json',
                 type: 'post',
                 success: function (data) {

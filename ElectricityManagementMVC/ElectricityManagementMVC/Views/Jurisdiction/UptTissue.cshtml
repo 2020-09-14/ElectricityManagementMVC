@@ -77,7 +77,7 @@
     function fantian() {
         var ids = $("#hi").val();
         $.ajax({
-            url: "http://localhost:2789/api/FanTissue?ids=" + ids,
+            url: "http://js/api/FanTissue?ids=" + ids,
             type: "get",
             dataType: "json",
             success: function (d) {
@@ -95,7 +95,7 @@
         obj.TLinkman = $("#txtLian").val();
         obj.TPhone = $("#txtPhone").val();
         $.ajax({
-            url: "http://localhost:2789/api/UptTissue",
+            url: "http://js/api/UptTissue",
             type: "post",
             data: obj,
             dataType: "text",
@@ -160,7 +160,7 @@
         function fantian() {
             var ids = $("#hi").val();
             $.ajax({
-                url: "http://localhost:2789/api/FanTissue?ids=" + ids,
+                url: "http://js/api/FanTissue?ids=" + ids,
                 type: "get",
                 dataType: "json",
                 success: function (d) {
@@ -180,7 +180,7 @@
             Tissue.TPhone = $("#Textshou").val();
             Tissue.TState = $("#Textzhuang").val();
             $.ajax({
-                url: "http://localhost:2789/api/UptTissue",
+                url: "http://js/api/UptTissue",
                 type: "post",
                 data: Tissue,
                 dataType: "text",

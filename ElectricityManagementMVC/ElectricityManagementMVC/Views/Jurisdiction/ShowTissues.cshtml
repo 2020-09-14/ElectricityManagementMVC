@@ -100,7 +100,7 @@
         var table = layui.table;
         table.render({
             elem: '#test'
-            , url: 'http://localhost:2789/api/ShowTissue'
+            , url: 'http://js/api/ShowTissue'
             , cols: [[
                 { type: 'checkbox', fixed: 'left' }
                 , { field: 'TId', width: 80, title: '序号', sort: true }
@@ -126,7 +126,7 @@
 
                     console.log(data);
                     $.ajax({
-                        url: 'http://localhost:2789/api/DelTissue',
+                        url: 'http://js/api/DelTissue',
                         data: { ids: data },
                         type: 'get',
                         dataType: 'json',
@@ -158,7 +158,7 @@
                 ids = ids.substr(1);
                 console.log(ids);
                 $.ajax({
-                    url: "http://localhost:2789/api/DelTissue?ids=" + ids,
+                    url: "http://js/api/DelTissue?ids=" + ids,
                     type: "get",
                     dataType: "json",
                     success: function (d) {

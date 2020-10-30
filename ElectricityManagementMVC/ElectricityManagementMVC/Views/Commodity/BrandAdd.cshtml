@@ -88,12 +88,12 @@
             data: formdata,
             contentType: false,
             processData: false,
-            url: "http://localhost:2789/Upload/FormImg",
+            url: "http://js/Upload/FormImg",
             success: function (result) {
                 if (result != "上传失败" || result != "文件为空") {
                     $('#hi').val(result)
                     alert(result)
-                    var line = '<img id="imgas" style="width:40px;height:40px"  src="http://localhost:2789' + result + '" />'
+                    var line = '<img id="imgas" style="width:40px;height:40px"  src="http://js' + result + '" />'
                     $('#imglist').append(line)
                     alert('上传成功！');
                 } else {
@@ -118,7 +118,7 @@
         obj.Bname = $("#tetName").val();
         obj.Corporation = $("#tetCorporation").val();
         $.ajax({
-            url: 'http://localhost:2789/api/Brandadd',
+            url: 'http://js/api/Brandadd',
             data: obj,
             type: 'post',
             success: function (d) {

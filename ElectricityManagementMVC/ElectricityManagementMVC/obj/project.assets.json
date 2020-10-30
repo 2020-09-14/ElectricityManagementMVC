@@ -4481,7 +4481,6 @@
       "path": "system.io.compression.zipfile/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7164,23 +7163,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\HP\\.nuget\\packages\\": {},
+    "C:\\Users\\T\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Desktop\\ToMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+      "projectUniqueName": "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
       "projectName": "ElectricityManagementMVC",
-      "projectPath": "C:\\Users\\HP\\Desktop\\ToMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
-      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Desktop\\ToMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
+      "projectPath": "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC.csproj",
+      "packagesPath": "C:\\Users\\T\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\T\\Desktop\\ElectricityManagementMVC\\ElectricityManagementMVC\\ElectricityManagementMVC\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\T\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

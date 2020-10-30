@@ -75,7 +75,7 @@
 
             table.render({
                 elem: '#test'
-                , url: 'http://localhost:2789/api/GetShowActivity'
+                , url: 'http://js/api/GetShowActivity'
                 , title: '限时购列表'
                 , method: 'get'
                 , id: 'testReload'
@@ -110,7 +110,8 @@
                 }
                 else if (layEvent === 'edit') {
                     var data = obj.data.Id;
-                    location.href = "/Activity/EditActivities?Id" + data;               
+              
+                    location.href = "/Activity/EditActivities?Id=" + data;               
                 }
 
             });
@@ -131,7 +132,7 @@
                         ids = ids.substr(1);
                         alert(ids);
                         $.ajax({
-                            url: "http://localhost:2789/api/DelAllActivities",
+                            url: "http://js/api/DelAllActivities",
                             type: "post",
                             data: { ids: ids },
                             success: function (d) {

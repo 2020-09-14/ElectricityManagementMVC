@@ -77,10 +77,10 @@
             "phone": $("#txtDian").val()
         };
         var cc = JSON.stringify(obj);
-        alert(obj);
+
 
         $.ajax({
-            url: 'http://localhost:2789/api/loginAsync',
+            url: 'http://js/api/loginAsync',
             type: 'post',
             dataType: 'json',
             data: cc,
@@ -103,7 +103,7 @@
         
 
         $.ajax({
-            url: 'http://localhost:2789/api/registerAsync',
+            url: 'http://js/api/registerAsync',
             type: 'get',
             dataType: 'json',
             data: { DName: DName, DMi: DMi },
@@ -111,6 +111,7 @@
             success: function (d) {
                 if (d > 0) {
                     alert('登陆成功！');
+                    sessionStorage.setItem("ddd", DName);
                     window.location.href = "/Commodity/CommShow";
                 }
                 if (d < 0) {

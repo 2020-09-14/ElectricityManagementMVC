@@ -80,6 +80,42 @@
         form.render();
 
     });
+    ccc();
+    function ccc() {
+        
+     
+        //obj.Id = JSON.stringify($("#XId").val());
+        //obj.Name = JSON.stringify($("#name").val());
+        //obj.Number = JSON.stringify($("#number").val());
+        //obj.Count = JSON.stringify(Number($("#count").val()));
+        //obj.Uptime = JSON.stringify(deat);
+        //obj.DownTime = JSON.stringify(deat1);
+
+        
+
+
+        $.ajax({
+            url: 'http://js/api/fantian?ids=' + $("#XId").val(),
+            type: 'get',
+            dataType: 'json',
+  
+            contentType: "application/json",
+            success: function (d) {
+                $(d).each(function () {
+                    $("#name").val(this.name);
+                    $("#number").val(this.number);
+                    $("#uptime").val(this.uptime);
+                    $("#downtime").val(this.downTime);
+                    $("#count").val(this.count);
+                })
+             
+              
+            }
+        })
+
+    }
+       
+   
 
     $("#Add").click(function () {
 
@@ -106,7 +142,7 @@
        
 
         $.ajax({
-            url: 'http://localhost:2789/api/EditActivities',
+            url: 'http://js/api/EditActivities',
             type: 'post',
             dataType: 'json',
             data: cc,
